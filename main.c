@@ -33,7 +33,7 @@ int					main(void) {
 			"                                         \n" \
 			"     (void)count;                        \n" \
 			"       z = 0;                            \n" \
-			"           buf = pow(input[i], 20);      \n" \
+			"           buf = __cl_pow(input[i], 20);      \n" \
 			"              while (z < 1)      \n" \
 			"             {                           \n" \
 			"               buf = sqrt(buf);          \n" \
@@ -48,7 +48,7 @@ int					main(void) {
 	cl_uint numEntries;
 	cl_platform_id *platforms;
 	cl_uint numPlatforms;
-	char		pname[128];
+	char		platform_name[128];
 
 	numEntries = 1;
 	platforms = (cl_platform_id*)malloc(sizeof(cl_platform_id)*numEntries);
@@ -58,7 +58,7 @@ int					main(void) {
 		printf("Error while getting available platforms.\n");
 		exit(1);
 	}
-	clGetPlatformInfo(platforms[0], CL_PLATFORM_NAME, 128, pname, NULL);
+	clGetPlatformInfo(platforms[0], CL_PLATFORM_NAME, 128, platform_name, NULL);
 /****************************************************************************************/
 /*****                     Getting available GPU devices                            *****/
 /****************************************************************************************/
@@ -72,8 +72,13 @@ int					main(void) {
 							deviceIDs, &numDevices);
 	if(res != CL_SUCCESS)
 	{
-		printf("Error while getting available GPU devices.\n");
-		exit(1);
+		res = clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_CPU, maxDevices,
+							 deviceIDs, &numDevices);
+		if(res != CL_SUCCESS)
+		{
+			printf("Error while getting available devices.\n");
+			exit(1);
+		}
 	}
 	clGetDeviceInfo(deviceIDs[0], CL_DEVICE_NAME, 128, name, NULL);
 /****************************************************************************************/
@@ -156,10 +161,12 @@ int					main(void) {
 	numberOfValues = 256;
 	sizeOfBuffers = numberOfValues*sizeof(double);
 	inputDoubles = (double*)malloc(sizeOfBuffers);
-	i = -1;
-	while (++i < numberOfValues)
+	i = 0;
+	while (i < numberOfValues)
+	{
 		inputDoubles[i] = i + 0.1;
-
+		i++;
+	}
 	//Creation and allocation of the input data for the kernel
 	inputBuffer = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeOfBuffers, NULL, &res);
 	if(res != CL_SUCCESS)
@@ -251,19 +258,23 @@ int					main(void) {
 //Execution
 	clEnqueueReadBuffer(commands, outputBuffer, blockingRead, offset, sizeOfBuffers, resultArray, numEvents, eventsToWait, &readResultsEvent);
 
-	i = -1;
-	while(++i < numberOfValues)
+	i = 0;
+	while(i < numberOfValues)
 	{
 		printf("%f\n", resultArray[i]);
-		if ((i+1) % 10 == 0 && i != 0)
+		if ((i + 1) % 10 == 0 && i != 0)
 		{
 			printf("\n");
 		}
+		i++;
 	}
 	clock_t stop = clock();
 	double elapsed = (double) (stop - start) / CLOCKS_PER_SEC;
 	printf("\nTime elapsed: %.5f\n", elapsed);
-	printf("We are using:\t\t%s\n", pname);
+	printf("The number of device can be used: %d\n", numDevices);
+	printf("We are using:\t\t%s\n", platform_name);
 	printf("We are using:\t\t%s\n", name);
+	printf("The local work size is: %zu\n", localWorkSize);
+	printf("The global work size is: %zu\n", globalWorkSize);
 	return (0);
 }
