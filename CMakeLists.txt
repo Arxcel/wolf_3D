@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.9)
-project(ft_wolf3D_vkozlov C)
+project(wolf3D)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
+set(SOURCE_FILES
+       main.c) # sources
+find_package(OpenCL REQUIRED)
 
-set(CMAKE_C_STANDARD 99)
-
-add_executable(ft_wolf3D_vkozlov main.c)
+add_executable(wolf3D ${SOURCE_FILES})
+target_link_libraries(wolf3D OpenCL::OpenCL)
