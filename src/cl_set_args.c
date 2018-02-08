@@ -12,7 +12,7 @@
 
 #include "my_cl.h"
 
-void	cl_set_args(t_cl *cl, void *a, size_t arg_size)
+void	cl_set_args(t_cl *cl, void *a, size_t arg_size, cl_uint arg_index)
 {
 	cl_mem			data;
 	cl_int			res;
@@ -24,7 +24,7 @@ void	cl_set_args(t_cl *cl, void *a, size_t arg_size)
 		ft_printf("Error while creating args buffer. Code:[%d]\n", res);
 		exit (1);
 	}
-	res = clSetKernelArg(cl->kernel, 0, sizeof(data), &data);
+	res = clSetKernelArg(cl->kernel, arg_index, sizeof(data), &data);
 	if (res != CL_SUCCESS)
 	{
 		ft_printf("Error while setting kernel arguments. Code:[%d]\n", res);

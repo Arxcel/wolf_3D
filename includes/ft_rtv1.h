@@ -60,13 +60,10 @@ short						solve_quadratic(const double *p,
 unsigned int				set_rgb(t_vector c);
 t_vector					get_color_percent(t_vector c);
 void						ft_swap_d(double *d1, double *d2);
-void						find_cam_dir(t_camera *cam,
-										 const int i, const int j);
-unsigned int				ft_cast_ray(__global t_object *object,
-										__global t_light *light,
-										__global t_camera *camera,
-										unsigned int hit_color,
-												t_object *hit_object);
+//void						find_cam_dir(t_camera *cam,
+//										 const int i, const int j);
+//unsigned int				ft_cast_ray(t_scene scene, unsigned int hit_color,
+//												t_object *hit_object);
 /*
 **  Drawing functions
 */

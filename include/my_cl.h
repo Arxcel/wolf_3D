@@ -48,7 +48,7 @@ void	cl_create_program(t_cl *cl,
 								const char *src_dir, const char *program_text);
 void	cl_create_input_buf(t_cl *cl, t_args args, size_t size);
 void	cl_create_res_buf(t_cl *cl, size_t size);
-void	cl_set_args(t_cl *cl, void *a, size_t arg_size);
+void	cl_set_args(t_cl *cl, void *a, size_t arg_size, cl_uint arg_index);
 void	cl_exec_kernel(t_cl *cl, cl_uint size_wd,
 						const size_t *val);
 void	cl_init(t_cl *cl);
