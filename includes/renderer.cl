@@ -12,7 +12,7 @@
 
 #include "ft_rtv1.h"
 
-void	get_surface_data(t_ray *ray, t_object object, double t)
+void	get_surface_data(t_ray *ray, t_object object, float t)
 {
     if (object.type == O_SPHERE)
         get_sphere_data(ray, object, t);
@@ -24,7 +24,7 @@ void	get_surface_data(t_ray *ray, t_object object, double t)
         get_plane_data(ray, object, t);
 }
 
-int		check_object_type(t_object object, t_ray *ray, double *t)
+int		check_object_type(t_object object, t_ray *ray, float *t)
 {
     if (object.type == O_SPHERE)
         return (sphere_cross(object, ray->orig, ray->dir, t));
@@ -37,26 +37,29 @@ int		check_object_type(t_object object, t_ray *ray, double *t)
     return (0);
 }
 
-static int				ft_trace(t_scene *scene, double *t_near,
+static int				ft_trace(__global t_object	*o,
+									__global t_light	*l,
+									__global t_camera	*cam,
+									float *t_near,
                                  t_object *hit_object, t_ray *ray)
 {
-    double	t;
+    float	t;
     int		i;
     int		flag;
     int		check;
-    double	z_buf;
+    float	z_buf;
     
     i = 0;
     flag = 0;
     z_buf = INF;
-    while (scene->object[i].type)
+    while (o[i].type)
     {
-        check = check_object_type(scene->object[i], ray, &t);
+        check = check_object_type(o[i], ray, &t);
         if (check && t < z_buf)
         {
             *t_near = t;
             z_buf = t;
-            *hit_object = scene->object[i];
+            *hit_object = o[i];
             flag = 1;
         }
         i++;
@@ -64,22 +67,25 @@ static int				ft_trace(t_scene *scene, double *t_near,
     return (flag);
 }
 
-static t_vector			get_color(t_scene *scene, t_object h,
-                                  t_ray ray, t_vector hit_color)
+static t_vector			get_color(__global t_object	*o,
+                                    __global t_light	*l,
+                                    __global t_camera	*cam,
+									t_object h,
+                                  	t_ray ray, t_vector hit_color)
 {
-    double			lt;
+    float			lt;
     t_vector		col;
     t_ray			light;
     t_object		shader;
     int				i;
     
     i = -1;
-    while (scene->light[++i].type)
+    while (l[++i].type)
     {
-        light.dir = v_normalize(scene->light[i].pos - ray.p_hit);
-        light.orig = ray.p_hit + v_mult_d(ray.n_hit, scene->camera[0].dias);
+        light.dir = v_normalize(l[i].pos - ray.p_hit);
+        light.orig = ray.p_hit + v_mult_d(ray.n_hit, cam[0].dias);
         lt = v_dot(ray.n_hit, light.dir);
-        if (!ft_trace(scene, &shader.p, &shader, &light))
+        if (!ft_trace(o, l, cam, &shader.p, &shader, &light))
         {
             col = v_mult_d(h.color, lt + 0.101) + v_mult_d(h.color, 0.101);
             col[0] += (0.8 - h.color[0]) * pow(lt, h.shape) * 0.9;
@@ -93,16 +99,16 @@ static t_vector			get_color(t_scene *scene, t_object h,
     return (hit_color);
 }
 
-static void				find_cam_dir(t_camera *cam, const int *iter)
+static void				find_cam_dir(__global t_camera    *cam, const int *iter)
 {
-    double scale;
-    double x;
-    double y;
+    float scale;
+    float x;
+    float y;
     
-    scale = tan(ft_deg2rad(cam->fov * 0.5));
-    x = (2 * (iter[1] + 0.5) / (double)IMG_WIDTH - 1) *
-    (IMG_WIDTH / (double)WIN_HEIGHT) * scale;
-    y = (1 - 2 * (iter[0] + 0.5) / (double)WIN_HEIGHT) * scale;
+    scale = native_tan(ft_deg2rad(cam->fov * 0.5));
+    x = (2 * (iter[1] + 0.5) / (float)IMG_WIDTH - 1) *
+    (IMG_WIDTH / (float)WIN_HEIGHT) * scale;
+    y = (1 - 2 * (iter[0] + 0.5) / (float)WIN_HEIGHT) * scale;
     cam->dir = (t_vector){x, y, -1};
     cam->dir = ft_rotate(cam->dir, cam->rot);
     cam->dir = v_normalize(cam->dir);
@@ -116,26 +122,26 @@ static unsigned int		ft_cast_ray(
 								t_object *hit_object)
 {
     t_ray			ray;
-    double			t;
+    float			t;
     t_vector		light;
     
-    ray.dir = camera[0].dir;
-    ray.orig = camera[0].pos;
+    ray.dir = cam[0].dir;
+    ray.orig = cam[0].pos;
     if (ft_trace(o , l, cam, &t, hit_object, &ray))
     {
         get_surface_data(&ray, *hit_object, t);
-        light = get_color(scene, *hit_object, ray, (t_vector){0, 0, 0});
+        light = get_color(o, l, cam, *hit_object, ray, (t_vector){0, 0, 0});
         hit_color = set_rgb(light);
     }
     return (hit_color);
 }
 
-void					ft_render(
+unsigned int		ft_renderer(
         __global t_object	*o,
         __global t_light	*l,
         __global t_camera	*cam,
-        int					x;
-        int					y;
+        int					x,
+        int					y
 )
 {
     int				iter[2];
@@ -146,5 +152,5 @@ void					ft_render(
 	iter[1] = x;
     find_cam_dir(cam, iter);
     z_color = ft_cast_ray(o, l, cam, 0, &hit_object);
-    image_set_pixel(&mlx->img, iter[1], iter[0], z_color);
+    return (z_color);
 }

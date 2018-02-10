@@ -15,6 +15,7 @@ set(SOURCE_FILES
         src/cl_get_platforms.c
         src/cl_get_devices.c
         src/cl_init.c
+        src/cl_get_results.c
         ) # sources
 find_package(OpenCL REQUIRED)
 set(LIBFT ${CMAKE_SOURCE_DIR}/libft/libft.a)

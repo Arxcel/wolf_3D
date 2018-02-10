@@ -49,10 +49,10 @@ t_matrix	m_transpose(t_matrix a)
 
 t_vector	m_mult_p(t_matrix m, t_vector v)
 {
-	double		a;
-	double		b;
-	double		c;
-	double		w;
+	float		a;
+	float		b;
+	float		c;
+	float		w;
 	t_vector	res;
 
 	a = v[0] * m.r[0][0] + v[1] * m.r[1][0] + v[2] * m.r[2][0] + m.r[3][0];
@@ -67,9 +67,9 @@ t_vector	m_mult_p(t_matrix m, t_vector v)
 
 t_vector	m_mult_v(t_matrix m, t_vector v)
 {
-	double		a;
-	double		b;
-	double		c;
+	float		a;
+	float		b;
+	float		c;
 	t_vector	res;
 
 	a = v[0] * m.r[0][0] + v[1] * m.r[1][0] + v[2] * m.r[2][0];

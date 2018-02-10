@@ -12,12 +12,12 @@
 
 #ifndef FT_SCENE_H
 # define FT_SCENE_H
-# include "ft_rtv1.h"
 # define O_SPHERE	1
 # define O_CON		2
 # define O_PLANE	3
 # define O_CYL		4
 # define L_SUN		1
+typedef float	t_vector __attribute__((vector_size(sizeof(float)*3)));
 
 typedef struct		s_object
 {

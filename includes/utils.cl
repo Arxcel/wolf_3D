@@ -32,15 +32,15 @@ unsigned int		set_rgb(t_vector c)
 	return (((int)c[0] << 16) | ((int)c[1] << 8) | (int)c[2]);
 }
 
-double				ft_deg2rad(double deg)
+float				ft_deg2rad(float deg)
 {
-	return (deg * M_PI / 180);
+	return (deg * 3.14 / 180);
 }
 
-short				solve_quadratic(const double *p, double *x0, double *x1)
+short				solve_quadratic(const float *p, float *x0, float *x1)
 {
-	double d;
-	double q;
+	float d;
+	float q;
 
 	d = p[1] * p[1] - 4 * p[0] * p[2];
 	if (d < 0)

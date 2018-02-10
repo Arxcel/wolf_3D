@@ -13,12 +13,12 @@
 #include "ft_rtv1.h"
 
 short				cyl_cross(t_object cyl, t_vector orig,
-								t_vector dir, double *t)
+								t_vector dir, float *t)
 {
-	double		t1;
-	double		t2;
+	float		t1;
+	float		t2;
 	t_vector	l;
-	double		params[3];
+	float		params[3];
 
 	l = orig - cyl.point;
 	params[0] = v_dot(dir, dir) - v_dot(dir, cyl.dir) * v_dot(dir, cyl.dir);
@@ -39,9 +39,9 @@ short				cyl_cross(t_object cyl, t_vector orig,
 	return (1);
 }
 
-short				get_cyl_data(t_ray *ray, t_object cyl, double t)
+short				get_cyl_data(t_ray *ray, t_object cyl, float t)
 {
-	double m;
+	float m;
 
 	m = v_dot(ray->dir, cyl.dir) * t + v_dot(ray->orig - cyl.point, cyl.dir);
 	ray->p_hit = ray->orig + v_mult_d(ray->dir, t);

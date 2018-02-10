@@ -12,10 +12,10 @@
 
 #include "ft_rtv1.h"
 
-static t_matrix			v_rot_x(double angle)
+static t_matrix			v_rot_x(float angle)
 {
 	t_matrix	a;
-	double		an;
+	float		an;
 
 	an = -ft_deg2rad(angle);
 	a.r[0] = (t_mrow){1, 0, 0, 0};
@@ -25,10 +25,10 @@ static t_matrix			v_rot_x(double angle)
 	return (a);
 }
 
-static t_matrix			v_rot_y(double angle)
+static t_matrix			v_rot_y(float angle)
 {
 	t_matrix	a;
-	double		an;
+	float		an;
 
 	an = -ft_deg2rad(angle);
 	a.r[0] = (t_mrow){cos(an), 0, sin(an), 0};
@@ -38,10 +38,10 @@ static t_matrix			v_rot_y(double angle)
 	return (a);
 }
 
-static t_matrix			v_rot_z(double angle)
+static t_matrix			v_rot_z(float angle)
 {
 	t_matrix	a;
-	double		an;
+	float		an;
 
 	an = -ft_deg2rad(angle);
 	a.r[0] = (t_mrow){cos(an), -sin(an), 0, 0};

@@ -54,12 +54,12 @@ typedef struct				s_param
 /*
 **  Util functions
 */
-double						ft_deg2rad(double deg);
-short						solve_quadratic(const double *p,
-											double *x0, double *x1);
+float						ft_deg2rad(float deg);
+short						solve_quadratic(const float *p,
+											float *x0, float *x1);
 unsigned int				set_rgb(t_vector c);
 t_vector					get_color_percent(t_vector c);
-void						ft_swap_d(double *d1, double *d2);
+void						ft_swap_d(float *d1, float *d2);
 //void						find_cam_dir(t_camera *cam,
 //										 const int i, const int j);
 //unsigned int				ft_cast_ray(t_scene scene, unsigned int hit_color,
@@ -67,6 +67,11 @@ void						ft_swap_d(double *d1, double *d2);
 /*
 **  Drawing functions
 */
+unsigned int		ft_renderer(
+		global t_object	*o,
+		global t_light	*l,
+		global t_camera *cam,
+		int x, int y);
 void						re_draw(t_mlx *mlx);
 void						set_ui(t_mlx *mlx);
 t_vector					ft_rotate(t_vector vector, t_vector angle);
@@ -74,22 +79,22 @@ t_vector					ft_rotate(t_vector vector, t_vector angle);
 **  Check intersections
 */
 void						get_surface_data(t_ray *ray,
-											t_object object, double t);
+											t_object object, float t);
 int							check_object_type(t_object object,
-												t_ray *ray, double *t);
+												t_ray *ray, float *t);
 short						sphere_cross(t_object sphere, t_vector
-												orig, t_vector dir, double *t);
+												orig, t_vector dir, float *t);
 short						get_sphere_data(t_ray *temp, t_object sphere,
-													double t);
+													float t);
 short						cyl_cross(t_object cyl, t_vector orig,
-												t_vector dir, double *t);
-short						get_cyl_data(t_ray *ray, t_object con, double t);
+												t_vector dir, float *t);
+short						get_cyl_data(t_ray *ray, t_object con, float t);
 short						con_cross(t_object cyl, t_vector orig,
-									t_vector dir, double *t);
-short						get_con_data(t_ray *ray, t_object con, double t);
-short						plane_cross(t_object *p, t_ray *r, double *t);
+									t_vector dir, float *t);
+short						get_con_data(t_ray *ray, t_object con, float t);
+short						plane_cross(t_object *p, t_ray *r, float *t);
 short						get_plane_data(t_ray *ray,
-											t_object plane, double t);
+											t_object plane, float t);
 /*
 **  Additional mlx functions
 */

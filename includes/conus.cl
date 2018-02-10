@@ -12,9 +12,9 @@
 
 #include "ft_rtv1.h"
 
-void			ft_swap_d(double *d1, double *d2)
+void			ft_swap_d(float *d1, float *d2)
 {
-	double buf;
+	float buf;
 
 	buf = *d1;
 	*d1 = *d2;
@@ -22,15 +22,15 @@ void			ft_swap_d(double *d1, double *d2)
 }
 
 short				con_cross(t_object con, t_vector orig,
-							t_vector dir, double *t)
+							t_vector dir, float *t)
 {
-	double		k;
-	double		t1;
-	double		t2;
+	float		k;
+	float		t1;
+	float		t2;
 	t_vector	l;
-	double		p[3];
+	float		p[3];
 
-	k = tan(ft_deg2rad(con.angle / 2));
+	k = native_tan(ft_deg2rad(con.angle / 2));
 	l = orig - con.point;
 	p[0] = v_dot(dir, dir) - (1 + k * k) *
 							v_dot(dir, con.dir) * v_dot(dir, con.dir);
@@ -51,12 +51,12 @@ short				con_cross(t_object con, t_vector orig,
 	return (1);
 }
 
-short				get_con_data(t_ray *ray, t_object con, double t)
+short				get_con_data(t_ray *ray, t_object con, float t)
 {
-	double m;
-	double k;
+	float m;
+	float k;
 
-	k = tan(ft_deg2rad(con.angle / 2));
+	k = native_tan(ft_deg2rad(con.angle / 2));
 	m = v_dot(ray->dir, con.dir) * t + v_dot(ray->orig - con.point, con.dir);
 	m *= (1 + k * k);
 	ray->p_hit = ray->orig + v_mult_d(ray->dir, t);

@@ -12,7 +12,7 @@
 
 #include "ft_rtv1.h"
 
-t_vector		v_mult_d(t_vector v, double d)
+t_vector		v_mult_d(t_vector v, float d)
 {
 	v[0] *= d;
 	v[1] *= d;
@@ -20,7 +20,7 @@ t_vector		v_mult_d(t_vector v, double d)
 	return (v);
 }
 
-t_vector		v_div_d(t_vector v, double d)
+t_vector		v_div_d(t_vector v, float d)
 {
 	v[0] /= d;
 	v[1] /= d;
@@ -28,11 +28,11 @@ t_vector		v_div_d(t_vector v, double d)
 	return (v);
 }
 
-double			v_length(t_vector v)
+float			v_length(t_vector v)
 {
-	double norm;
-	double sqrt_calculated;
-	double length;
+	float norm;
+	float sqrt_calculated;
+	float length;
 
 	norm = v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
 	sqrt_calculated = sqrt(norm);
@@ -42,7 +42,7 @@ double			v_length(t_vector v)
 
 t_vector		v_normalize(t_vector v)
 {
-	double		norm;
+	float		norm;
 	t_vector	res;
 
 	norm = v_length(v);
@@ -50,9 +50,9 @@ t_vector		v_normalize(t_vector v)
 	return (res);
 }
 
-double			v_dot(t_vector v1, t_vector v2)
+float			v_dot(t_vector v1, t_vector v2)
 {
-	double	res;
+	float	res;
 
 	res = v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
 	return (res);
