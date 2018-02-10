@@ -4,21 +4,11 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
 include_directories(include libft/include) # header directories
 set(SOURCE_FILES
        main.c
-        src/cl_create_compile_program.c
-        src/cl_create_input.c
-        src/cl_create_kernel.c
-        src/cl_create_queue.c
-        src/cl_err_message.c
-        src/cl_execute_kernel.c
-        src/cl_set_args.c
-        src/cl_create_context.c
-        src/cl_get_platforms.c
-        src/cl_get_devices.c
-        src/cl_init.c
-        src/cl_get_results.c
         ) # sources
-find_package(OpenCL REQUIRED)
 set(LIBFT ${CMAKE_SOURCE_DIR}/libft/libft.a)
+set(LSDL ${CMAKE_SOURCE_DIR}/frameworks/SDL2.framework/SDL2)
+set(LSDLIMG ${CMAKE_SOURCE_DIR}/frameworks/SDL2_image.framework/SDL2_image)
+set(LSDLTTF ${CMAKE_SOURCE_DIR}/frameworks/SDL2_ttf.framework/SDL2_ttf)
 
 add_executable(wolf3D ${SOURCE_FILES})
-target_link_libraries(wolf3D ${LIBFT} OpenCL::OpenCL)
+target_link_libraries(wolf3D ${LIBFT} ${LSDL} ${LSDLIMG} ${LSDLTTF})
