@@ -15,6 +15,7 @@ int					main(void) {
 	SDL_Renderer		*ren;
 	int					isactive;
 	SDL_Event			e;
+	SDL_Surface			*sSur;
 
 	isactive = 1;
 	if (SDL_Init(SDL_INIT_EVERYTHING))
@@ -29,6 +30,8 @@ int					main(void) {
 	SDL_SetRenderDrawColor(ren, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(ren);
 	SDL_RenderPresent(ren);
+	sSur = SDL_GetWindowSurface(win);
+	ft_bzero(sSur->pixels, WIN_WIDTH * WIN_HEIGHT);
 	while (isactive)
 	{
 		while(SDL_PollEvent( &e ) != 0)
@@ -39,6 +42,8 @@ int					main(void) {
 				if (e.key.keysym.sym == 27)
 					isactive = 0;
 		}
+		//SDL_BlitSurface(sur, NULL, sSur, NULL);
+		//SDL_UpdateWindowSurface(win);
 	}
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
