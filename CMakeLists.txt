@@ -3,7 +3,8 @@ project(wolf3D)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
 include_directories(include libft/include) # header directories
 set(SOURCE_FILES
-       main.c
+       src/main.c
+       src/sdl.c
         ) # sources
 set(LIBFT ${CMAKE_SOURCE_DIR}/libft/libft.a)
 set(LSDL ${CMAKE_SOURCE_DIR}/frameworks/SDL2.framework/SDL2)

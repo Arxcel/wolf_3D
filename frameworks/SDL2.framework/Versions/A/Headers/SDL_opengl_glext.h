@@ -2883,9 +2883,9 @@ GLAPI void APIENTRY glDrawElementsInstancedARB (GLenum mode, GLsizei count, GLen
 #define GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB 0x8810
 #define GL_PROGRAM_STRING_ARB             0x8628
 #define GL_PROGRAM_ERROR_POSITION_ARB     0x864B
-#define GL_CURRENT_MATRIX_ARB             0x8641
-#define GL_TRANSPOSE_CURRENT_MATRIX_ARB   0x88B7
-#define GL_CURRENT_MATRIX_STACK_DEPTH_ARB 0x8640
+#define GL_CURRENt_matrix33_ARB             0x8641
+#define GL_TRANSPOSE_CURRENt_matrix33_ARB   0x88B7
+#define GL_CURRENt_matrix33_STACK_DEPTH_ARB 0x8640
 #define GL_MAX_PROGRAM_MATRICES_ARB       0x862F
 #define GL_MAX_PROGRAM_MATRIX_STACK_DEPTH_ARB 0x862E
 #define GL_MAX_TEXTURE_COORDS_ARB         0x8871
@@ -3232,7 +3232,7 @@ GLAPI void APIENTRY glVertexAttribDivisorARB (GLuint index, GLuint divisor);
 #define GL_MAX_PALETTE_MATRICES_ARB       0x8842
 #define GL_CURRENT_PALETTE_MATRIX_ARB     0x8843
 #define GL_MATRIX_INDEX_ARRAY_ARB         0x8844
-#define GL_CURRENT_MATRIX_INDEX_ARB       0x8845
+#define GL_CURRENt_matrix33_INDEX_ARB       0x8845
 #define GL_MATRIX_INDEX_ARRAY_SIZE_ARB    0x8846
 #define GL_MATRIX_INDEX_ARRAY_TYPE_ARB    0x8847
 #define GL_MATRIX_INDEX_ARRAY_STRIDE_ARB  0x8848
@@ -5368,8 +5368,8 @@ GLAPI void APIENTRY glDrawRangeElementArrayATI (GLenum mode, GLuint start, GLuin
 
 #ifndef GL_ATI_envmap_bumpmap
 #define GL_ATI_envmap_bumpmap 1
-#define GL_BUMP_ROT_MATRIX_ATI            0x8775
-#define GL_BUMP_ROT_MATRIX_SIZE_ATI       0x8776
+#define GL_BUMP_ROt_matrix33_ATI            0x8775
+#define GL_BUMP_ROt_matrix33_SIZE_ATI       0x8776
 #define GL_BUMP_NUM_TEX_UNITS_ATI         0x8777
 #define GL_BUMP_TEX_UNITS_ATI             0x8778
 #define GL_DUDV_ATI                       0x8779
@@ -9910,8 +9910,8 @@ GLAPI void APIENTRY glGetIntegerui64i_vNV (GLenum value, GLuint index, GLuint64E
 #define GL_MATRIX5_NV                     0x8635
 #define GL_MATRIX6_NV                     0x8636
 #define GL_MATRIX7_NV                     0x8637
-#define GL_CURRENT_MATRIX_STACK_DEPTH_NV  0x8640
-#define GL_CURRENT_MATRIX_NV              0x8641
+#define GL_CURRENt_matrix33_STACK_DEPTH_NV  0x8640
+#define GL_CURRENt_matrix33_NV              0x8641
 #define GL_VERTEX_PROGRAM_POINT_SIZE_NV   0x8642
 #define GL_VERTEX_PROGRAM_TWO_SIDE_NV     0x8643
 #define GL_PROGRAM_PARAMETER_NV           0x8644

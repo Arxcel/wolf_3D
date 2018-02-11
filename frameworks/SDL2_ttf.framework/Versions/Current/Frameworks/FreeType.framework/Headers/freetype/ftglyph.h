@@ -110,7 +110,7 @@ FT_BEGIN_HEADER
     FT_Library             library;
     const FT_Glyph_Class*  clazz;
     FT_Glyph_Format        format;
-    FT_Vector              advance;
+    Ft_vector2              advance;
 
   } FT_GlyphRec;
 
@@ -286,8 +286,8 @@ FT_BEGIN_HEADER
   /*                                                                       */
   FT_EXPORT( FT_Error )
   FT_Glyph_Transform( FT_Glyph    glyph,
-                      FT_Matrix*  matrix,
-                      FT_Vector*  delta );
+                      Ft_matrix33*  matrix,
+                      Ft_vector2*  delta );
 
 
   /*************************************************************************/
@@ -532,7 +532,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Error )
   FT_Glyph_To_Bitmap( FT_Glyph*       the_glyph,
                       FT_Render_Mode  render_mode,
-                      FT_Vector*      origin,
+                      Ft_vector2*      origin,
                       FT_Bool         destroy );
 
 
@@ -566,7 +566,7 @@ FT_BEGIN_HEADER
   /*************************************************************************/
   /*                                                                       */
   /* <Function>                                                            */
-  /*    FT_Matrix_Multiply                                                 */
+  /*    Ft_matrix33_Multiply                                                 */
   /*                                                                       */
   /* <Description>                                                         */
   /*    Perform the matrix operation `b = a*b'.                            */
@@ -581,14 +581,14 @@ FT_BEGIN_HEADER
   /*    The result is undefined if either `a' or `b' is zero.              */
   /*                                                                       */
   FT_EXPORT( void )
-  FT_Matrix_Multiply( const FT_Matrix*  a,
-                      FT_Matrix*        b );
+  Ft_matrix33_Multiply( const Ft_matrix33*  a,
+                      Ft_matrix33*        b );
 
 
   /*************************************************************************/
   /*                                                                       */
   /* <Function>                                                            */
-  /*    FT_Matrix_Invert                                                   */
+  /*    Ft_matrix33_Invert                                                   */
   /*                                                                       */
   /* <Description>                                                         */
   /*    Invert a 2x2 matrix.  Return an error if it can't be inverted.     */
@@ -601,7 +601,7 @@ FT_BEGIN_HEADER
   /*    FreeType error code.  0~means success.                             */
   /*                                                                       */
   FT_EXPORT( FT_Error )
-  FT_Matrix_Invert( FT_Matrix*  matrix );
+  Ft_matrix33_Invert( Ft_matrix33*  matrix );
 
 
   /* */

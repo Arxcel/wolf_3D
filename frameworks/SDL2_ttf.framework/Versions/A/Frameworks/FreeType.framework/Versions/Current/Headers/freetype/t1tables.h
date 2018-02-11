@@ -268,8 +268,8 @@ FT_BEGIN_HEADER
     FT_Fixed*        design_pos[T1_MAX_MM_DESIGNS];
     PS_DesignMapRec  design_map[T1_MAX_MM_AXIS];
 
-    FT_Fixed*        weight_vector;
-    FT_Fixed*        default_weight_vector;
+    FT_Fixed*        weight_vector2;
+    FT_Fixed*        default_weight_vector2;
 
     PS_FontInfo      font_infos[T1_MAX_MM_DESIGNS + 1];
     PS_Private       privates  [T1_MAX_MM_DESIGNS + 1];
@@ -281,7 +281,7 @@ FT_BEGIN_HEADER
     /* since 2.3.0 */
 
     /* undocumented, optional: the default design instance;   */
-    /* corresponds to default_weight_vector --                */
+    /* corresponds to default_weight_vector2 --                */
     /* num_default_design_vector == 0 means it is not present */
     /* in the font and associated metrics files               */
     FT_UInt          default_design_vector[T1_MAX_MM_DESIGNS];
@@ -313,8 +313,8 @@ FT_BEGIN_HEADER
 
     FT_Byte        paint_type;
     FT_Byte        font_type;
-    FT_Matrix      font_matrix;
-    FT_Vector      font_offset;
+    Ft_matrix33      font_matrix33;
+    Ft_vector2      font_offset;
 
     FT_UInt        num_subrs;
     FT_ULong       subrmap_offset;
@@ -527,7 +527,7 @@ FT_BEGIN_HEADER
   {
     /* conventionally in the font dictionary */
     PS_DICT_FONT_TYPE,              /* FT_Byte         */
-    PS_DICT_FONT_MATRIX,            /* FT_Fixed        */
+    PS_DICT_FONt_matrix33,            /* FT_Fixed        */
     PS_DICT_FONT_BBOX,              /* FT_Fixed        */
     PS_DICT_PAINT_TYPE,             /* FT_Byte         */
     PS_DICT_FONT_NAME,              /* FT_String*      */

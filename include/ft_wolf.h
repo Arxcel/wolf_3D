@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wolf3D.h                                        :+:      :+:    :+:   */
+/*   ft_wolf.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _MY_CL_H
-# define _MY_CL_H
+#ifndef FT_WOLF_H
+# define FT_WOLF_H
 # include <stdio.h>
 # include "ft_libftu.h"
-# include "../frameworks/SDL2.framework/Headers/SDL.h"
-# include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
-# include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
-# define WIN_WIDTH			1280
-# define WIN_HEIGHT			720
-# define MSG(x)				ft_killer(x)
+# include "ft_sdl.h"
+# include "ft_vector2.h"
+# include "ft_matrix33.h"
 
+
+# define WIN_WIDTH			700
+# define WIN_HEIGHT			600
+# define MSG(x)				ft_killer(x)
 
 int				ft_killer(const char *reason);
 

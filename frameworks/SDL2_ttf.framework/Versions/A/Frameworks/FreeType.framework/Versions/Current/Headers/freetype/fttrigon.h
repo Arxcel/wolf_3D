@@ -117,7 +117,7 @@ FT_BEGIN_HEADER
    *
    * @note:
    *   If you need both the sinus and cosinus for a given angle, use the
-   *   function @FT_Vector_Unit.
+   *   function @Ft_vector2_Unit.
    *
    */
   FT_EXPORT( FT_Fixed )
@@ -141,7 +141,7 @@ FT_BEGIN_HEADER
    *
    * @note:
    *   If you need both the sinus and cosinus for a given angle, use the
-   *   function @FT_Vector_Unit.
+   *   function @Ft_vector2_Unit.
    *
    */
   FT_EXPORT( FT_Fixed )
@@ -221,7 +221,7 @@ FT_BEGIN_HEADER
   /*************************************************************************
    *
    * @function:
-   *   FT_Vector_Unit
+   *   Ft_vector2_Unit
    *
    * @description:
    *   Return the unit vector corresponding to a given angle.  After the
@@ -241,14 +241,14 @@ FT_BEGIN_HEADER
    *
    */
   FT_EXPORT( void )
-  FT_Vector_Unit( FT_Vector*  vec,
+  Ft_vector2_Unit( Ft_vector2*  vec,
                   FT_Angle    angle );
 
 
   /*************************************************************************
    *
    * @function:
-   *   FT_Vector_Rotate
+   *   Ft_vector2_Rotate
    *
    * @description:
    *   Rotate a vector by a given angle.
@@ -263,14 +263,14 @@ FT_BEGIN_HEADER
    *
    */
   FT_EXPORT( void )
-  FT_Vector_Rotate( FT_Vector*  vec,
+  Ft_vector2_Rotate( Ft_vector2*  vec,
                     FT_Angle    angle );
 
 
   /*************************************************************************
    *
    * @function:
-   *   FT_Vector_Length
+   *   Ft_vector2_Length
    *
    * @description:
    *   Return the length of a given vector.
@@ -285,13 +285,13 @@ FT_BEGIN_HEADER
    *
    */
   FT_EXPORT( FT_Fixed )
-  FT_Vector_Length( FT_Vector*  vec );
+  Ft_vector2_Length( Ft_vector2*  vec );
 
 
   /*************************************************************************
    *
    * @function:
-   *   FT_Vector_Polarize
+   *   Ft_vector2_Polarize
    *
    * @description:
    *   Compute both the length and angle of a given vector.
@@ -309,7 +309,7 @@ FT_BEGIN_HEADER
    *
    */
   FT_EXPORT( void )
-  FT_Vector_Polarize( FT_Vector*  vec,
+  Ft_vector2_Polarize( Ft_vector2*  vec,
                       FT_Fixed   *length,
                       FT_Angle   *angle );
 
@@ -317,7 +317,7 @@ FT_BEGIN_HEADER
   /*************************************************************************
    *
    * @function:
-   *   FT_Vector_From_Polar
+   *   Ft_vector2_From_Polar
    *
    * @description:
    *   Compute vector coordinates from a length and angle.
@@ -335,7 +335,7 @@ FT_BEGIN_HEADER
    *
    */
   FT_EXPORT( void )
-  FT_Vector_From_Polar( FT_Vector*  vec,
+  Ft_vector2_From_Polar( Ft_vector2*  vec,
                         FT_Fixed    length,
                         FT_Angle    angle );
 

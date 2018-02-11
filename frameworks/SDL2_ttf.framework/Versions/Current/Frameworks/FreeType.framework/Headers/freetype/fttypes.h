@@ -70,9 +70,9 @@ FT_BEGIN_HEADER
   /*    FT_Fixed                                                           */
   /*    FT_Pointer                                                         */
   /*    FT_Pos                                                             */
-  /*    FT_Vector                                                          */
+  /*    Ft_vector2                                                          */
   /*    FT_BBox                                                            */
-  /*    FT_Matrix                                                          */
+  /*    Ft_matrix33                                                          */
   /*    FT_FWord                                                           */
   /*    FT_UFWord                                                          */
   /*    FT_F2Dot14                                                         */
@@ -358,7 +358,7 @@ FT_BEGIN_HEADER
   /*************************************************************************/
   /*                                                                       */
   /* <Struct>                                                              */
-  /*    FT_Matrix                                                          */
+  /*    Ft_matrix33                                                          */
   /*                                                                       */
   /* <Description>                                                         */
   /*    A simple structure used to store a 2x2 matrix.  Coefficients are   */
@@ -378,12 +378,12 @@ FT_BEGIN_HEADER
   /*                                                                       */
   /*    yy :: Matrix coefficient.                                          */
   /*                                                                       */
-  typedef struct  FT_Matrix_
+  typedef struct  Ft_matrix33_
   {
     FT_Fixed  xx, xy;
     FT_Fixed  yx, yy;
 
-  } FT_Matrix;
+  } Ft_matrix33;
 
 
   /*************************************************************************/
