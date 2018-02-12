@@ -5,6 +5,8 @@ include_directories(include libft/include) # header directories
 set(SOURCE_FILES
        src/main.c
        src/sdl.c
+       src/ft_matrix33.c
+       src/ft_vector2.c
         ) # sources
 set(LIBFT ${CMAKE_SOURCE_DIR}/libft/libft.a)
 set(LSDL ${CMAKE_SOURCE_DIR}/frameworks/SDL2.framework/SDL2)

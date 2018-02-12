@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Ft_matrix33_H
-# define Ft_matrix33_H
+#ifndef FT_MATRIX33_H
+# define FT_MATRIX33_H
+
 typedef double	t_mrow3 __attribute__((vector_size(sizeof(double)*3)));
 typedef struct	s_matrix
 {

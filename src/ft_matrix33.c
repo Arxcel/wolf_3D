@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix332.c                                       :+:      :+:    :+:   */
+/*   ft_matrix33.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -51,7 +51,6 @@ t_vector2	m_mult_p(t_matrix33 m, t_vector2 v)
 {
 	double		a;
 	double		b;
-	double		c;
 	double		w;
 	t_vector2	res;
 

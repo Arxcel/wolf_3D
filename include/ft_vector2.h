@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vector22.h                                      :+:      :+:    :+:   */
+/*   ft_vector2.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Ft_vector22_H
-# define Ft_vector22_H
-typedef double	t_vector2 __attribute__((vector_size(sizeof(double)*2)));
+#ifndef FT_VECTOR2_H
+# define FT_VECTOR2_H
 
+typedef double	t_vector2 __attribute__((vector_size(sizeof(double)*2)));
 t_vector2			v_normalize(t_vector2 v);
 t_vector2			v_mult_d(t_vector2 v, double d);
 t_vector2			v_div_d(t_vector2 v, double d);

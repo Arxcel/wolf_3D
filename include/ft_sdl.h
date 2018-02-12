@@ -20,7 +20,7 @@ typedef struct		s_img
 {
 	size_t			width;
 	size_t			height;
-	int				*pixels;
+	Uint32			*pixels;
 }					t_img;
 
 typedef struct		s_sdl
@@ -35,7 +35,6 @@ typedef struct		s_sdl
 void				sdl_init(t_sdl *sdl);
 t_img				sdl_create_image(size_t w, size_t h);
 void				sdl_clear_image(t_img *img);
-void				sdl_put_image(t_img *img, t_sdl sdl);
+void				sdl_put_image(t_sdl *sdl);
 void				sdl_pixel_put(t_img *img, int x, int y, int color);
-void				sdl_hook(t_sdl *sdl);
 #endif
