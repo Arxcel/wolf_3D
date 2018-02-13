@@ -1620,7 +1620,7 @@ FT_BEGIN_HEADER
     FT_Glyph_Metrics  metrics;
     FT_Fixed          linearHoriAdvance;
     FT_Fixed          linearVertAdvance;
-    Ft_vector2         advance;
+    FT_Vector         advance;
 
     FT_Glyph_Format   format;
 
@@ -2685,8 +2685,8 @@ FT_BEGIN_HEADER
   /*                                                                       */
   FT_EXPORT( void )
   FT_Set_Transform( FT_Face     face,
-                    Ft_matrix33*  matrix,
-                    Ft_vector2*  delta );
+                    FT_Matrix*  matrix,
+                    FT_Vector*  delta );
 
 
   /*************************************************************************/
@@ -2903,7 +2903,7 @@ FT_BEGIN_HEADER
                   FT_UInt     left_glyph,
                   FT_UInt     right_glyph,
                   FT_UInt     kern_mode,
-                  Ft_vector2  *akerning );
+                  FT_Vector  *akerning );
 
 
   /*************************************************************************/
@@ -3317,7 +3317,7 @@ FT_BEGIN_HEADER
                         FT_UInt      *p_flags,
                         FT_Int       *p_arg1,
                         FT_Int       *p_arg2,
-                        Ft_matrix33    *p_transform );
+                        FT_Matrix    *p_transform );
 
 
   /*************************************************************************/
@@ -3648,9 +3648,9 @@ FT_BEGIN_HEADER
   /*    FT_RoundFix                                                        */
   /*    FT_CeilFix                                                         */
   /*    FT_FloorFix                                                        */
-  /*    Ft_vector2_Transform                                                */
-  /*    Ft_matrix33_Multiply                                                 */
-  /*    Ft_matrix33_Invert                                                   */
+  /*    FT_Vector_Transform                                                */
+  /*    FT_Matrix_Multiply                                                 */
+  /*    FT_Matrix_Invert                                                   */
   /*                                                                       */
   /*************************************************************************/
 
@@ -3822,7 +3822,7 @@ FT_BEGIN_HEADER
   /*************************************************************************/
   /*                                                                       */
   /* <Function>                                                            */
-  /*    Ft_vector2_Transform                                                */
+  /*    FT_Vector_Transform                                                */
   /*                                                                       */
   /* <Description>                                                         */
   /*    Transform a single vector through a 2x2 matrix.                    */
@@ -3837,8 +3837,8 @@ FT_BEGIN_HEADER
   /*    The result is undefined if either `vector' or `matrix' is invalid. */
   /*                                                                       */
   FT_EXPORT( void )
-  Ft_vector2_Transform( Ft_vector2*        vec,
-                       const Ft_matrix33*  matrix );
+  FT_Vector_Transform( FT_Vector*        vec,
+                       const FT_Matrix*  matrix );
 
 
   /*************************************************************************/

@@ -129,7 +129,7 @@ FT_BEGIN_HEADER
   FT_Get_PFR_Kerning( FT_Face     face,
                       FT_UInt     left,
                       FT_UInt     right,
-                      Ft_vector2  *avector );
+                      FT_Vector  *avector );
 
 
  /**********************************************************************

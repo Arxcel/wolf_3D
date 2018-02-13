@@ -18,8 +18,8 @@
 
 typedef struct		s_img
 {
-	size_t			width;
-	size_t			height;
+	size_t			w;
+	size_t			h;
 	int				*pixels;
 }					t_img;
 

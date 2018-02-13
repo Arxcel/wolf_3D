@@ -370,7 +370,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Stroker_BeginSubPath( FT_Stroker  stroker,
-                           Ft_vector2*  to,
+                           FT_Vector*  to,
                            FT_Bool     open );
 
 
@@ -423,7 +423,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Stroker_LineTo( FT_Stroker  stroker,
-                     Ft_vector2*  to );
+                     FT_Vector*  to );
 
 
   /**************************************************************
@@ -454,8 +454,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Stroker_ConicTo( FT_Stroker  stroker,
-                      Ft_vector2*  control,
-                      Ft_vector2*  to );
+                      FT_Vector*  control,
+                      FT_Vector*  to );
 
 
   /**************************************************************
@@ -489,9 +489,9 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Stroker_CubicTo( FT_Stroker  stroker,
-                      Ft_vector2*  control1,
-                      Ft_vector2*  control2,
-                      Ft_vector2*  to );
+                      FT_Vector*  control1,
+                      FT_Vector*  control2,
+                      FT_Vector*  to );
 
 
   /**************************************************************

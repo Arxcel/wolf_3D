@@ -41,9 +41,9 @@ t_img				sdl_create_image(size_t w, size_t h)
 {
 	t_img img;
 
-	img.width = w;
-	img.height = h;
-	if (!(img.pixels = ft_memalloc(sizeof(int) * img.width * img.height)))
+	img.w = w;
+	img.h = h;
+	if (!(img.pixels = ft_memalloc(sizeof(int) * img.w * img.h)))
 		MSG("Error allocating memory for pixels");
 	sdl_clear_image(&img);
 	return (img);
@@ -51,7 +51,7 @@ t_img				sdl_create_image(size_t w, size_t h)
 
 void				sdl_clear_image(t_img *img)
 {
-	ft_bzero(img->pixels, img->width * img->height * 4);
+	ft_bzero(img->pixels, img->w * img->h * 4);
 }
 
 void				sdl_put_image(t_sdl *sdl)
@@ -64,7 +64,7 @@ void				sdl_put_image(t_sdl *sdl)
 
 void				sdl_pixel_put(t_img *img, int x, int y, int color)
 {
-	if (x < 0 || (size_t)x > img->width || y < 0 || (size_t)y > img->height)
+	if (x < 0 || (size_t)x > img->w || y < 0 || (size_t)y > img->h)
 		return ;
-	img->pixels[x + y * img->width] = color;
+	img->pixels[x + y * img->w] = color;
 }

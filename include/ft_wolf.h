@@ -13,11 +13,11 @@
 #ifndef FT_WOLF_H
 # define FT_WOLF_H
 # include <stdio.h>
+# include <fcntl.h>
 # include "ft_libftu.h"
 # include "ft_sdl.h"
 # include "ft_vector2.h"
 # include "ft_matrix33.h"
-
 # define WIN_W			700
 # define WIN_H			600
 # define TEX_W			64
@@ -52,8 +52,8 @@ typedef struct				s_frame
 }							t_frame;
 typedef struct				s_map
 {
-	size_t					m_width;
-	size_t					m_height;
+	int						m_w;
+	int						m_h;
 	int						**w_map;
 }							t_map;
 typedef struct				s_keyboard
@@ -81,7 +81,7 @@ typedef struct				s_ray
 	int						step[2];
 	int						hit;
 	int						side;
-	int						line_height;
+	int						line_h;
 	int						draw[2];
 	int						color;
 	int						tex_id;
@@ -102,5 +102,7 @@ int							ft_killer(const char *reason);
 t_matrix33					v_rot(double angle);
 void						sdl_hook(t_main *m);
 void						move_player(t_main *m);
+void						ft_ftoa(const char *file, t_map *map);
 void						create_std_texture(t_main *m);
+void						ray_cast(t_main *m);
 #endif

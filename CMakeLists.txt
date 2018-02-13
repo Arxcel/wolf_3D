@@ -9,7 +9,10 @@ set(SOURCE_FILES
        src/ft_matrix33.c
        src/ft_vector2.c
        src/rotate_matrix.c
+       src/move_player.c
+       src/ray_cast.c
        src/create_texture_patterns.c
+       src/ft_ftoa.c
         ) # sources
 set(LIBFT ${CMAKE_SOURCE_DIR}/libft/libft.a)
 set(LSDL ${CMAKE_SOURCE_DIR}/frameworks/SDL2.framework/SDL2)

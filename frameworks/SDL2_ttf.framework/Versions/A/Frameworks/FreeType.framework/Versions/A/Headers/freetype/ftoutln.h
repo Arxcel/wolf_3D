@@ -305,7 +305,7 @@ FT_BEGIN_HEADER
   /*                                                                       */
   FT_EXPORT( void )
   FT_Outline_Transform( const FT_Outline*  outline,
-                        const Ft_matrix33*   matrix );
+                        const FT_Matrix*   matrix );
 
 
   /*************************************************************************/

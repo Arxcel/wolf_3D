@@ -214,7 +214,7 @@ GLAPI void APIENTRY glCopyTexSubImage3D (GLenum target, GLint level, GLint xoffs
 #define GL_INTERPOLATE                    0x8575
 #define GL_SUBTRACT                       0x84E7
 #define GL_CONSTANT                       0x8576
-#define GL_PRIMARY_C                  0x8577
+#define GL_PRIMARY_COLOR                  0x8577
 #define GL_PREVIOUS                       0x8578
 #define GL_DOT3_RGB                       0x86AE
 #define GL_DOT3_RGBA                      0x86AF
@@ -346,12 +346,12 @@ GLAPI void APIENTRY glMultTransposeMatrixd (const GLdouble *m);
 #define GL_FOG_COORDINATE_ARRAY_POINTER   0x8456
 #define GL_FOG_COORDINATE_ARRAY           0x8457
 #define GL_COLOR_SUM                      0x8458
-#define GL_CURRENT_SECONDARY_C        0x8459
-#define GL_SECONDARY_C_ARRAY_SIZE     0x845A
-#define GL_SECONDARY_C_ARRAY_TYPE     0x845B
-#define GL_SECONDARY_C_ARRAY_STRIDE   0x845C
-#define GL_SECONDARY_C_ARRAY_POINTER  0x845D
-#define GL_SECONDARY_C_ARRAY          0x845E
+#define GL_CURRENT_SECONDARY_COLOR        0x8459
+#define GL_SECONDARY_COLOR_ARRAY_SIZE     0x845A
+#define GL_SECONDARY_COLOR_ARRAY_TYPE     0x845B
+#define GL_SECONDARY_COLOR_ARRAY_STRIDE   0x845C
+#define GL_SECONDARY_COLOR_ARRAY_POINTER  0x845D
+#define GL_SECONDARY_COLOR_ARRAY          0x845E
 #define GL_TEXTURE_FILTER_CONTROL         0x8500
 #define GL_DEPTH_TEXTURE_MODE             0x884B
 #define GL_COMPARE_R_TO_TEXTURE           0x884E
@@ -506,7 +506,7 @@ typedef ptrdiff_t GLintptr;
 #define GL_INDEX_ARRAY_BUFFER_BINDING     0x8899
 #define GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING 0x889A
 #define GL_EDGE_FLAG_ARRAY_BUFFER_BINDING 0x889B
-#define GL_SECONDARY_C_ARRAY_BUFFER_BINDING 0x889C
+#define GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING 0x889C
 #define GL_FOG_COORDINATE_ARRAY_BUFFER_BINDING 0x889D
 #define GL_WEIGHT_ARRAY_BUFFER_BINDING    0x889E
 #define GL_FOG_COORD_SRC                  0x8450
@@ -859,7 +859,7 @@ GLAPI void APIENTRY glVertexAttribPointer (GLuint index, GLint size, GLenum type
 #define GL_SRGB8_ALPHA8                   0x8C43
 #define GL_COMPRESSED_SRGB                0x8C48
 #define GL_COMPRESSED_SRGB_ALPHA          0x8C49
-#define GL_CURRENT_RASTER_SECONDARY_C 0x845F
+#define GL_CURRENT_RASTER_SECONDARY_COLOR 0x845F
 #define GL_SLUMINANCE_ALPHA               0x8C44
 #define GL_SLUMINANCE8_ALPHA8             0x8C45
 #define GL_SLUMINANCE                     0x8C46
@@ -2883,9 +2883,9 @@ GLAPI void APIENTRY glDrawElementsInstancedARB (GLenum mode, GLsizei count, GLen
 #define GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB 0x8810
 #define GL_PROGRAM_STRING_ARB             0x8628
 #define GL_PROGRAM_ERROR_POSITION_ARB     0x864B
-#define GL_CURRENt_matrix33_ARB             0x8641
-#define GL_TRANSPOSE_CURRENt_matrix33_ARB   0x88B7
-#define GL_CURRENt_matrix33_STACK_DEPTH_ARB 0x8640
+#define GL_CURRENT_MATRIX_ARB             0x8641
+#define GL_TRANSPOSE_CURRENT_MATRIX_ARB   0x88B7
+#define GL_CURRENT_MATRIX_STACK_DEPTH_ARB 0x8640
 #define GL_MAX_PROGRAM_MATRICES_ARB       0x862F
 #define GL_MAX_PROGRAM_MATRIX_STACK_DEPTH_ARB 0x862E
 #define GL_MAX_TEXTURE_COORDS_ARB         0x8871
@@ -3099,7 +3099,7 @@ typedef unsigned short GLhalfARB;
 #define GL_COLOR_TABLE                    0x80D0
 #define GL_POST_CONVOLUTION_COLOR_TABLE   0x80D1
 #define GL_POST_COLOR_MATRIX_COLOR_TABLE  0x80D2
-#define GL_PROXY_C_TABLE              0x80D3
+#define GL_PROXY_COLOR_TABLE              0x80D3
 #define GL_PROXY_POST_CONVOLUTION_COLOR_TABLE 0x80D4
 #define GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE 0x80D5
 #define GL_COLOR_TABLE_SCALE              0x80D6
@@ -3232,7 +3232,7 @@ GLAPI void APIENTRY glVertexAttribDivisorARB (GLuint index, GLuint divisor);
 #define GL_MAX_PALETTE_MATRICES_ARB       0x8842
 #define GL_CURRENT_PALETTE_MATRIX_ARB     0x8843
 #define GL_MATRIX_INDEX_ARRAY_ARB         0x8844
-#define GL_CURRENt_matrix33_INDEX_ARB       0x8845
+#define GL_CURRENT_MATRIX_INDEX_ARB       0x8845
 #define GL_MATRIX_INDEX_ARRAY_SIZE_ARB    0x8846
 #define GL_MATRIX_INDEX_ARRAY_TYPE_ARB    0x8847
 #define GL_MATRIX_INDEX_ARRAY_STRIDE_ARB  0x8848
@@ -3910,7 +3910,7 @@ GLAPI void APIENTRY glGetCompressedTexImageARB (GLenum target, GLint level, void
 #define GL_INTERPOLATE_ARB                0x8575
 #define GL_SUBTRACT_ARB                   0x84E7
 #define GL_CONSTANT_ARB                   0x8576
-#define GL_PRIMARY_C_ARB              0x8577
+#define GL_PRIMARY_COLOR_ARB              0x8577
 #define GL_PREVIOUS_ARB                   0x8578
 #endif /* GL_ARB_texture_env_combine */
 
@@ -4164,7 +4164,7 @@ typedef ptrdiff_t GLintptrARB;
 #define GL_INDEX_ARRAY_BUFFER_BINDING_ARB 0x8899
 #define GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING_ARB 0x889A
 #define GL_EDGE_FLAG_ARRAY_BUFFER_BINDING_ARB 0x889B
-#define GL_SECONDARY_C_ARRAY_BUFFER_BINDING_ARB 0x889C
+#define GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING_ARB 0x889C
 #define GL_FOG_COORDINATE_ARRAY_BUFFER_BINDING_ARB 0x889D
 #define GL_WEIGHT_ARRAY_BUFFER_BINDING_ARB 0x889E
 #define GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING_ARB 0x889F
@@ -5368,8 +5368,8 @@ GLAPI void APIENTRY glDrawRangeElementArrayATI (GLenum mode, GLuint start, GLuin
 
 #ifndef GL_ATI_envmap_bumpmap
 #define GL_ATI_envmap_bumpmap 1
-#define GL_BUMP_ROt_matrix33_ATI            0x8775
-#define GL_BUMP_ROt_matrix33_SIZE_ATI       0x8776
+#define GL_BUMP_ROT_MATRIX_ATI            0x8775
+#define GL_BUMP_ROT_MATRIX_SIZE_ATI       0x8776
 #define GL_BUMP_NUM_TEX_UNITS_ATI         0x8777
 #define GL_BUMP_TEX_UNITS_ATI             0x8778
 #define GL_DUDV_ATI                       0x8779
@@ -7141,15 +7141,15 @@ GLAPI void APIENTRY glProvokingVertexEXT (GLenum mode);
 #define GL_RESCALE_NORMAL_EXT             0x803A
 #endif /* GL_EXT_rescale_normal */
 
-#ifndef GL_EXT_secondarY_C
-#define GL_EXT_secondarY_C 1
+#ifndef GL_EXT_secondary_color
+#define GL_EXT_secondary_color 1
 #define GL_COLOR_SUM_EXT                  0x8458
-#define GL_CURRENT_SECONDARY_C_EXT    0x8459
-#define GL_SECONDARY_C_ARRAY_SIZE_EXT 0x845A
-#define GL_SECONDARY_C_ARRAY_TYPE_EXT 0x845B
-#define GL_SECONDARY_C_ARRAY_STRIDE_EXT 0x845C
-#define GL_SECONDARY_C_ARRAY_POINTER_EXT 0x845D
-#define GL_SECONDARY_C_ARRAY_EXT      0x845E
+#define GL_CURRENT_SECONDARY_COLOR_EXT    0x8459
+#define GL_SECONDARY_COLOR_ARRAY_SIZE_EXT 0x845A
+#define GL_SECONDARY_COLOR_ARRAY_TYPE_EXT 0x845B
+#define GL_SECONDARY_COLOR_ARRAY_STRIDE_EXT 0x845C
+#define GL_SECONDARY_COLOR_ARRAY_POINTER_EXT 0x845D
+#define GL_SECONDARY_COLOR_ARRAY_EXT      0x845E
 typedef void (APIENTRYP PFNGLSECONDARYCOLOR3BEXTPROC) (GLbyte red, GLbyte green, GLbyte blue);
 typedef void (APIENTRYP PFNGLSECONDARYCOLOR3BVEXTPROC) (const GLbyte *v);
 typedef void (APIENTRYP PFNGLSECONDARYCOLOR3DEXTPROC) (GLdouble red, GLdouble green, GLdouble blue);
@@ -7186,7 +7186,7 @@ GLAPI void APIENTRY glSecondaryColor3usEXT (GLushort red, GLushort green, GLusho
 GLAPI void APIENTRY glSecondaryColor3usvEXT (const GLushort *v);
 GLAPI void APIENTRY glSecondaryColorPointerEXT (GLint size, GLenum type, GLsizei stride, const void *pointer);
 #endif
-#endif /* GL_EXT_secondarY_C */
+#endif /* GL_EXT_secondary_color */
 
 #ifndef GL_EXT_separate_shader_objects
 #define GL_EXT_separate_shader_objects 1
@@ -7470,7 +7470,7 @@ GLAPI void APIENTRY glTexBufferEXT (GLenum target, GLenum internalformat, GLuint
 #define GL_ADD_SIGNED_EXT                 0x8574
 #define GL_INTERPOLATE_EXT                0x8575
 #define GL_CONSTANT_EXT                   0x8576
-#define GL_PRIMARY_C_EXT              0x8577
+#define GL_PRIMARY_COLOR_EXT              0x8577
 #define GL_PREVIOUS_EXT                   0x8578
 #define GL_SOURCE0_RGB_EXT                0x8580
 #define GL_SOURCE1_RGB_EXT                0x8581
@@ -8165,7 +8165,7 @@ GLAPI void APIENTRY glFlushStaticDataIBM (GLenum target);
 #define GL_TEXTURE_COORD_ARRAY_LIST_IBM   103074
 #define GL_EDGE_FLAG_ARRAY_LIST_IBM       103075
 #define GL_FOG_COORDINATE_ARRAY_LIST_IBM  103076
-#define GL_SECONDARY_C_ARRAY_LIST_IBM 103077
+#define GL_SECONDARY_COLOR_ARRAY_LIST_IBM 103077
 #define GL_VERTEX_ARRAY_LIST_STRIDE_IBM   103080
 #define GL_NORMAL_ARRAY_LIST_STRIDE_IBM   103081
 #define GL_COLOR_ARRAY_LIST_STRIDE_IBM    103082
@@ -8173,7 +8173,7 @@ GLAPI void APIENTRY glFlushStaticDataIBM (GLenum target);
 #define GL_TEXTURE_COORD_ARRAY_LIST_STRIDE_IBM 103084
 #define GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM 103085
 #define GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM 103086
-#define GL_SECONDARY_C_ARRAY_LIST_STRIDE_IBM 103087
+#define GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM 103087
 typedef void (APIENTRYP PFNGLCOLORPOINTERLISTIBMPROC) (GLint size, GLenum type, GLint stride, const void **pointer, GLint ptrstride);
 typedef void (APIENTRYP PFNGLSECONDARYCOLORPOINTERLISTIBMPROC) (GLint size, GLenum type, GLint stride, const void **pointer, GLint ptrstride);
 typedef void (APIENTRYP PFNGLEDGEFLAGPOINTERLISTIBMPROC) (GLint stride, const GLboolean **pointer, GLint ptrstride);
@@ -9147,8 +9147,8 @@ GLAPI void APIENTRY glProgramBufferParametersIuivNV (GLenum target, GLuint bindi
 #define GL_FONT_UNDERLINE_POSITION_BIT_NV 0x04000000
 #define GL_FONT_UNDERLINE_THICKNESS_BIT_NV 0x08000000
 #define GL_FONT_HAS_KERNING_BIT_NV        0x10000000
-#define GL_PRIMARY_C_NV               0x852C
-#define GL_SECONDARY_C_NV             0x852D
+#define GL_PRIMARY_COLOR_NV               0x852C
+#define GL_SECONDARY_COLOR_NV             0x852D
 typedef GLuint (APIENTRYP PFNGLGENPATHSNVPROC) (GLsizei range);
 typedef void (APIENTRYP PFNGLDELETEPATHSNVPROC) (GLuint path, GLsizei range);
 typedef GLboolean (APIENTRYP PFNGLISPATHNVPROC) (GLuint path);
@@ -9332,7 +9332,7 @@ GLAPI void APIENTRY glPrimitiveRestartIndexNV (GLuint index);
 #define GL_SPARE1_NV                      0x852F
 #define GL_DISCARD_NV                     0x8530
 #define GL_E_TIMES_F_NV                   0x8531
-#define GL_SPARE0_PLUS_SECONDARY_C_NV 0x8532
+#define GL_SPARE0_PLUS_SECONDARY_COLOR_NV 0x8532
 #define GL_UNSIGNED_IDENTITY_NV           0x8536
 #define GL_UNSIGNED_INVERT_NV             0x8537
 #define GL_EXPAND_NORMAL_NV               0x8538
@@ -9652,8 +9652,8 @@ GLAPI void APIENTRY glTextureImage3DMultisampleCoverageNV (GLuint texture, GLenu
 
 #ifndef GL_NV_transform_feedback
 #define GL_NV_transform_feedback 1
-#define GL_BACK_PRIMARY_C_NV          0x8C77
-#define GL_BACK_SECONDARY_C_NV        0x8C78
+#define GL_BACK_PRIMARY_COLOR_NV          0x8C77
+#define GL_BACK_SECONDARY_COLOR_NV        0x8C78
 #define GL_TEXTURE_COORD_NV               0x8C79
 #define GL_CLIP_DISTANCE_NV               0x8C7A
 #define GL_VERTEX_ID_NV                   0x8C7B
@@ -9841,7 +9841,7 @@ GLAPI void APIENTRY glVertexAttribLFormatNV (GLuint index, GLint size, GLenum ty
 #define GL_INDEX_ARRAY_ADDRESS_NV         0x8F24
 #define GL_TEXTURE_COORD_ARRAY_ADDRESS_NV 0x8F25
 #define GL_EDGE_FLAG_ARRAY_ADDRESS_NV     0x8F26
-#define GL_SECONDARY_C_ARRAY_ADDRESS_NV 0x8F27
+#define GL_SECONDARY_COLOR_ARRAY_ADDRESS_NV 0x8F27
 #define GL_FOG_COORD_ARRAY_ADDRESS_NV     0x8F28
 #define GL_ELEMENT_ARRAY_ADDRESS_NV       0x8F29
 #define GL_VERTEX_ATTRIB_ARRAY_LENGTH_NV  0x8F2A
@@ -9851,7 +9851,7 @@ GLAPI void APIENTRY glVertexAttribLFormatNV (GLuint index, GLint size, GLenum ty
 #define GL_INDEX_ARRAY_LENGTH_NV          0x8F2E
 #define GL_TEXTURE_COORD_ARRAY_LENGTH_NV  0x8F2F
 #define GL_EDGE_FLAG_ARRAY_LENGTH_NV      0x8F30
-#define GL_SECONDARY_C_ARRAY_LENGTH_NV 0x8F31
+#define GL_SECONDARY_COLOR_ARRAY_LENGTH_NV 0x8F31
 #define GL_FOG_COORD_ARRAY_LENGTH_NV      0x8F32
 #define GL_ELEMENT_ARRAY_LENGTH_NV        0x8F33
 #define GL_DRAW_INDIRECT_UNIFIED_NV       0x8F40
@@ -9910,8 +9910,8 @@ GLAPI void APIENTRY glGetIntegerui64i_vNV (GLenum value, GLuint index, GLuint64E
 #define GL_MATRIX5_NV                     0x8635
 #define GL_MATRIX6_NV                     0x8636
 #define GL_MATRIX7_NV                     0x8637
-#define GL_CURRENt_matrix33_STACK_DEPTH_NV  0x8640
-#define GL_CURRENt_matrix33_NV              0x8641
+#define GL_CURRENT_MATRIX_STACK_DEPTH_NV  0x8640
+#define GL_CURRENT_MATRIX_NV              0x8641
 #define GL_VERTEX_PROGRAM_POINT_SIZE_NV   0x8642
 #define GL_VERTEX_PROGRAM_TWO_SIDE_NV     0x8643
 #define GL_PROGRAM_PARAMETER_NV           0x8644
@@ -10945,7 +10945,7 @@ GLAPI void APIENTRY glTagSampleBufferSGIX (void);
 #define GL_COLOR_TABLE_SGI                0x80D0
 #define GL_POST_CONVOLUTION_COLOR_TABLE_SGI 0x80D1
 #define GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI 0x80D2
-#define GL_PROXY_C_TABLE_SGI          0x80D3
+#define GL_PROXY_COLOR_TABLE_SGI          0x80D3
 #define GL_PROXY_POST_CONVOLUTION_COLOR_TABLE_SGI 0x80D4
 #define GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE_SGI 0x80D5
 #define GL_COLOR_TABLE_SCALE_SGI          0x80D6

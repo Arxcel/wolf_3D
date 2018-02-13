@@ -62,7 +62,7 @@ FT_BEGIN_HEADER
   /*************************************************************************/
   /*                                                                       */
   /* <Struct>                                                              */
-  /*    Ft_vector2                                                          */
+  /*    FT_Vector                                                          */
   /*                                                                       */
   /* <Description>                                                         */
   /*    A simple structure used to store a 2D vector; coordinates are of   */
@@ -72,12 +72,12 @@ FT_BEGIN_HEADER
   /*    x :: The horizontal coordinate.                                    */
   /*    y :: The vertical coordinate.                                      */
   /*                                                                       */
-  typedef struct  Ft_vector2_
+  typedef struct  FT_Vector_
   {
     FT_Pos  x;
     FT_Pos  y;
 
-  } Ft_vector2;
+  } FT_Vector;
 
 
   /*************************************************************************/
@@ -343,7 +343,7 @@ FT_BEGIN_HEADER
   /*                                                                       */
   /*    n_points   :: The number of points in the outline.                 */
   /*                                                                       */
-  /*    points     :: A pointer to an array of `n_points' @Ft_vector2       */
+  /*    points     :: A pointer to an array of `n_points' @FT_Vector       */
   /*                  elements, giving the outline's point coordinates.    */
   /*                                                                       */
   /*    tags       :: A pointer to an array of `n_points' chars, giving    */
@@ -385,7 +385,7 @@ FT_BEGIN_HEADER
     short       n_contours;      /* number of contours in glyph        */
     short       n_points;        /* number of points in the glyph      */
 
-    Ft_vector2*  points;          /* the outline's points               */
+    FT_Vector*  points;          /* the outline's points               */
     char*       tags;            /* the points flags                   */
     short*      contours;        /* the contour end points             */
 
@@ -553,7 +553,7 @@ FT_BEGIN_HEADER
   /*    Error code.  0~means success.                                      */
   /*                                                                       */
   typedef int
-  (*FT_Outline_MoveToFunc)( const Ft_vector2*  to,
+  (*FT_Outline_MoveToFunc)( const FT_Vector*  to,
                             void*             user );
 
 #define FT_Outline_MoveTo_Func  FT_Outline_MoveToFunc
@@ -580,7 +580,7 @@ FT_BEGIN_HEADER
   /*    Error code.  0~means success.                                      */
   /*                                                                       */
   typedef int
-  (*FT_Outline_LineToFunc)( const Ft_vector2*  to,
+  (*FT_Outline_LineToFunc)( const FT_Vector*  to,
                             void*             user );
 
 #define FT_Outline_LineTo_Func  FT_Outline_LineToFunc
@@ -611,8 +611,8 @@ FT_BEGIN_HEADER
   /*    Error code.  0~means success.                                      */
   /*                                                                       */
   typedef int
-  (*FT_Outline_ConicToFunc)( const Ft_vector2*  control,
-                             const Ft_vector2*  to,
+  (*FT_Outline_ConicToFunc)( const FT_Vector*  control,
+                             const FT_Vector*  to,
                              void*             user );
 
 #define FT_Outline_ConicTo_Func  FT_Outline_ConicToFunc
@@ -643,9 +643,9 @@ FT_BEGIN_HEADER
   /*    Error code.  0~means success.                                      */
   /*                                                                       */
   typedef int
-  (*FT_Outline_CubicToFunc)( const Ft_vector2*  control1,
-                             const Ft_vector2*  control2,
-                             const Ft_vector2*  to,
+  (*FT_Outline_CubicToFunc)( const FT_Vector*  control1,
+                             const FT_Vector*  control2,
+                             const FT_Vector*  to,
                              void*             user );
 
 #define FT_Outline_CubicTo_Func  FT_Outline_CubicToFunc

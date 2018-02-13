@@ -42,7 +42,7 @@
 # define PF_GOT_ML		(1 << 11)
 # define PF_GOT_PRECI	(1 << 12)
 # define PF_BUF			32
-# define BUFF_SIZE		32
+# define BUFF_SIZE		1024
 
 /*
 **-------Structures
