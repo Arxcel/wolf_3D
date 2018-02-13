@@ -20,7 +20,7 @@ typedef struct		s_img
 {
 	size_t			width;
 	size_t			height;
-	Uint32			*pixels;
+	int				*pixels;
 }					t_img;
 
 typedef struct		s_sdl
