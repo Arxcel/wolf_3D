@@ -12,14 +12,19 @@
 
 #include "ft_wolf.h"
 
-int							ft_killer(const char *reason)
+int						set_rgb(unsigned int r, unsigned int g, unsigned int b)
+{
+	return ((r << 16) | (g << 8) | b);
+}
+
+int						ft_killer(const char *reason)
 {
 	if (reason && *reason)
 		ft_putendl_fd(reason, 2);
 	exit(0);
 }
 
-static void					calc_performance(t_frame *f)
+static void				calc_performance(t_frame *f)
 {
 	f->old_time = f->curr_time;
 	f->curr_time = SDL_GetTicks();
@@ -28,15 +33,21 @@ static void					calc_performance(t_frame *f)
 	f->rot_speed = f->frame_time * 3.0;
 }
 
-static void					finish(t_main *m)
+static void				finish(t_main *m)
 {
+	int i;
+
+	i = -1;
+	while (++i < 8)
+		free(m->texture[i]);
 	free(m->sdl.img.pixels);
+	SDL_DestroyTexture(m->sdl.texture);
 	SDL_DestroyRenderer(m->sdl.ren);
 	SDL_DestroyWindow(m->sdl.win);
 	SDL_Quit();
 }
 
-int							main(int ac, char **av)
+int						main(int ac, char **av)
 {
 	t_main		m;
 
@@ -45,12 +56,13 @@ int							main(int ac, char **av)
 		MSG("Wrong number of arguments.");
 	ft_ftoa(av[1], &m.map);
 	sdl_init(&m.sdl);
+	m.tex_custom = 1;
 	m.player.pos = (t_vector2){22, 11.5};
 	m.player.dir = (t_vector2){-1, 0};
 	m.player.cam = (t_vector2){0, 0.66};
 	m.player.state = 2;
 	m.frame.speed_mod = 5;
-	create_std_texture(&m);
+	create_textures(&m);
 	while (m.sdl.running)
 	{
 		sdl_hook(&m);

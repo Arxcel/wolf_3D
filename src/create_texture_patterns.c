@@ -12,7 +12,7 @@
 
 #include "ft_wolf.h"
 
-static void	fill_texture(t_main *m, int x, int y)
+static void		fill_texture_std(t_main *m, int x, int y)
 {
 	m->texture[0][TEX_W * y + x] =
 			(65536 * 254 * (x != y && x != TEX_W - y));
@@ -32,19 +32,63 @@ static void	fill_texture(t_main *m, int x, int y)
 			(128 + 256 * 128 + 65536 * 128);
 }
 
-void		create_std_texture(t_main *m)
+static int		get_col_by_i(void *ptr, int i)
 {
-	int		x;
+	unsigned char *tmp;
+
+	tmp = (unsigned char*)ptr;
+	return (set_rgb(tmp[i + 2], tmp[i + 1], tmp[i]));
+}
+
+static void		ft_get_image(int *pixels, const char *path)
+{
+	SDL_Surface		*sur;
+	int				i;
+	int				size;
+	int				k;
+
+	i = -1;
+	size = TEX_H * TEX_W;
+	k = 0;
+	sur = IMG_Load(path);
+	while (++i < size)
+	{
+		pixels[i] = get_col_by_i(sur->pixels, k);
+		k += 4;
+	}
+	SDL_FreeSurface(sur);
+}
+
+static void		fill_texture_custom(t_main *m)
+{
+	ft_get_image(m->texture[0], "../pics/eagle.png");
+	ft_get_image(m->texture[1], "../pics/redbrick.png");
+	ft_get_image(m->texture[2], "../pics/bluestone.png");
+	ft_get_image(m->texture[3], "../pics/wood.png");
+	ft_get_image(m->texture[4], "../pics/greystone.png");
+	ft_get_image(m->texture[5], "../pics/mossy.png");
+	ft_get_image(m->texture[6], "../pics/colorstone.png");
+	ft_get_image(m->texture[7], "../pics/purplestone.png");
+}
+
+void			create_textures(t_main *m)
+{
+	int		i;
 	int		y;
 
-	x = -1;
-	while (++x < 8)
-		m->texture[x] = (int*)malloc(sizeof(int) * (int)TEX_H * (int)TEX_W);
-	x = -1;
-	while (++x < TEX_W)
+	i = -1;
+	while (++i < 8)
+		m->texture[i] = (int*)malloc(sizeof(int) * (int)TEX_H * (int)TEX_W);
+	if (m->tex_custom)
+		fill_texture_custom(m);
+	else
 	{
-		y = -1;
-		while (++y < TEX_H)
-			fill_texture(m, x, y);
+		i = -1;
+		while (++i < TEX_W)
+		{
+			y = -1;
+			while (++y < TEX_H)
+				fill_texture_std(m, i, y);
+		}
 	}
 }

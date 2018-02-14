@@ -87,6 +87,13 @@ typedef struct				s_ray
 	int						tex_id;
 	int						tex[2];
 	double					wall_hit_pos;
+	double					floor[2];
+	double					dist_to_player;
+	double					dist_to_wall;
+	double					curr_dist;
+	double					curr_floor[2];
+	int						floor_tex_pos[2];
+	double					percent;
 }							t_ray;
 typedef struct				s_main
 {
@@ -97,12 +104,16 @@ typedef struct				s_main
 	t_keyboard				kb;
 	t_mouse					mouse;
 	int						*texture[8];
+	short					tex_custom;
 }							t_main;
+int							set_rgb(unsigned int r,
+									unsigned int g, unsigned int b);
 int							ft_killer(const char *reason);
 t_matrix33					v_rot(double angle);
 void						sdl_hook(t_main *m);
 void						move_player(t_main *m);
 void						ft_ftoa(const char *file, t_map *map);
-void						create_std_texture(t_main *m);
+void						create_textures(t_main *m);
 void						ray_cast(t_main *m);
+void						floor_cast(t_ray *r, t_main *m, int x);
 #endif

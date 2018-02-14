@@ -73,7 +73,9 @@ static void					draw_vertical_line(t_ray *r, t_main *m, int x)
 		r->tex[1] = ((d * TEX_H) / r->line_h) / 256;
 		r->color = m->texture[r->tex_id][TEX_H * r->tex[1] + r->tex[0]];
 		if (r->side == 1)
-			r->color /= 2;
+			r->color = set_rgb((unsigned int)((r->color & 0x00ff0000) >> 16) /
+							2, (unsigned int)((r->color & 0x0000ff00) >> 8) / 2,
+							(unsigned int)((r->color & 0x000000ff)) / 2);
 		sdl_pixel_put(&m->sdl.img, x, y, r->color);
 	}
 }
@@ -127,5 +129,6 @@ void						ray_cast(t_main *m)
 		cast_ray(&ray, m);
 		calc_wall_h_tex(&ray, m);
 		draw_vertical_line(&ray, m, x);
+		floor_cast(&ray, m, x);
 	}
 }

@@ -12,7 +12,7 @@
 
 #include "ft_wolf.h"
 
-static void			ft_read_line(int *m, char *l, int m_w)
+static void			ft_read_line(int *m, char *l, t_map *map, int h)
 {
 	char	**buf;
 	int		i;
@@ -21,13 +21,19 @@ static void			ft_read_line(int *m, char *l, int m_w)
 	buf = ft_strsplit(l, ' ');
 	while (buf[++i])
 	{
-		if (i > m_w)
+		if (i > map->m_w)
 			MSG("Error in map parameters. Width.");
 		m[i] = ft_atoi(buf[i]);
 		free(buf[i]);
+		if (m[i] == 10)
+			printf("%d = %d\n", h, map->m_h);
+		if (m[i] < 0 || (h == 0 && m[i] == 0) ||
+				(h == map->m_h - 1 && m[i] == 0) ||
+				(i == 0 && m[i] == 0) || (i == map->m_w - 1 && m[i] == 0))
+			MSG("Error in map content. Borders or minus textures.");
 	}
 	free(buf);
-	if (i != m_w)
+	if (i != map->m_w)
 		MSG("Error in map parameters. Width.");
 }
 
@@ -42,7 +48,7 @@ static void			ft_read_map(int fd, t_map *map)
 	{
 		if (ret == -1)
 			MSG("Error in reading file.");
-		ft_read_line(map->w_map[h], l, map->m_w);
+		ft_read_line(map->w_map[h], l, map, h);
 		free(l);
 		if (h > map->m_h)
 			MSG("Wrong map parameters.");
