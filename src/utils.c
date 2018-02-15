@@ -12,6 +12,18 @@
 
 #include "ft_wolf.h"
 
+int					set_rgb(unsigned int r, unsigned int g, unsigned int b)
+{
+	return ((r << 16) | (g << 8) | b);
+}
+
+int					ft_killer(const char *reason)
+{
+	if (reason && *reason)
+		ft_putendl_fd(reason, 2);
+	exit(0);
+}
+
 t_matrix33			v_rot(double angle)
 {
 	t_matrix33	a;

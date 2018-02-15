@@ -76,8 +76,11 @@ static void					draw_vertical_line(t_ray *r, t_main *m, int x)
 			r->color = set_rgb((unsigned int)((r->color & 0x00ff0000) >> 16) /
 							2, (unsigned int)((r->color & 0x0000ff00) >> 8) / 2,
 							(unsigned int)((r->color & 0x000000ff)) / 2);
-		if (r->ray_length > 1)
-			r->color = set_rgb((unsigned int)(((r->color & 0x00ff0000) >> 16) / r->ray_length), (unsigned int)(((r->color & 0x0000ff00) >> 8) /r->ray_length), (unsigned int)(((r->color & 0x000000ff)) / r->ray_length));
+		if (m->hard_mod && r->ray_length > m->player.view_area)
+			r->color = set_rgb((unsigned int)(((r->color & 0x00ff0000) >> 16) /
+			r->ray_length), (unsigned int)(((r->color & 0x0000ff00) >> 8) /
+			r->ray_length), (unsigned int)(((r->color & 0x000000ff)) /
+					r->ray_length));
 		sdl_pixel_put(&m->sdl.img, x, y, r->color);
 	}
 }
@@ -91,11 +94,10 @@ static void					calc_wall_h_tex(t_ray *r, t_main *m)
 		r->ray_length = (r->ray_position[1] - m->player.pos[1]
 						+ (1 - r->step[1]) / 2) / r->ray_dir[1];
 	r->line_h = (int)(m->sdl.img.h / r->ray_length);
-	r->draw[0] = -r->line_h / 2 + (int)(m->sdl.img.h / m->player.state);
+	r->draw[0] = -r->line_h / 1 + (int)(m->sdl.img.h / m->player.state);
 	if (r->draw[0] < 0)
 		r->draw[0] = 0;
-	r->draw[1] = r->line_h / 2 +
-				(int)(m->sdl.img.h / m->player.state);
+	r->draw[1] = r->line_h / 2 + (int)(m->sdl.img.h / m->player.state);
 	if (r->draw[1] >= WIN_H)
 		r->draw[1] = WIN_H - 1;
 	r->tex_id = m->map.w_map[r->ray_position[0]][r->ray_position[1]] - 1;

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 project(wolf3d)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra -O3")
 include_directories(include libft/include) # header directories
 set(SOURCE_FILES
        src/main.c
@@ -8,13 +8,12 @@ set(SOURCE_FILES
        src/sdl_hook.c
        src/ft_matrix33.c
        src/ft_vector2.c
-       src/rotate_matrix.c
+       src/utils.c
        src/move_player.c
        src/ray_cast.c
        src/create_texture_patterns.c
        src/ft_ftoa.c
-       src/floor_casting.c
-        ) # sources
+       src/floor_casting.c)
 set(LIBFT ${CMAKE_SOURCE_DIR}/libft/libft.a)
 set(LSDL ${CMAKE_SOURCE_DIR}/frameworks/SDL2.framework/SDL2)
 set(LSDLIMG ${CMAKE_SOURCE_DIR}/frameworks/SDL2_image.framework/SDL2_image)

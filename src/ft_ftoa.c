@@ -12,6 +12,12 @@
 
 #include "ft_wolf.h"
 
+static void			set_player_pos(int w, int h, t_map *m)
+{
+	m->player_pos[0] = h - 0.5 + 1;
+	m->player_pos[1] = w - 0.5 + 1;
+}
+
 static void			ft_read_line(int *m, char *l, t_map *map, int h)
 {
 	char	**buf;
@@ -23,18 +29,22 @@ static void			ft_read_line(int *m, char *l, t_map *map, int h)
 	{
 		if (i > map->m_w)
 			MSG("Error in map parameters. Width.");
+		if (!ft_strcmp(buf[i], "X"))
+			set_player_pos(i, h, map);
 		m[i] = ft_atoi(buf[i]);
 		free(buf[i]);
 		if (m[i] == 10)
 			printf("%d = %d\n", h, map->m_h);
-		if (m[i] < 0 || (h == 0 && m[i] == 0) ||
-				(h == map->m_h - 1 && m[i] == 0) ||
-				(i == 0 && m[i] == 0) || (i == map->m_w - 1 && m[i] == 0))
+		if (m[i] < 0 || (h == 0 && m[i] == 0) || (h == map->m_h - 1 && m[i]
+			== 0) || (i == 0 && m[i] == 0) || (i == map->m_w - 1 && m[i] == 0))
 			MSG("Error in map content. Borders or minus textures.");
 	}
 	free(buf);
 	if (i != map->m_w)
 		MSG("Error in map parameters. Width.");
+	if (i == map->m_w && h == map->m_h &&
+			!map->player_pos[0] && !map->player_pos[1])
+		MSG("Error in map content. Player basic position.");
 }
 
 static void			ft_read_map(int fd, t_map *map)

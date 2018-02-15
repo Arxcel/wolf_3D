@@ -28,8 +28,6 @@ void				sdl_init(t_sdl *sdl)
 								SDL_TEXTUREACCESS_STREAMING,
 								WIN_W, WIN_H)))
 		MSG(SDL_GetError());
-	SDL_ShowCursor(SDL_DISABLE);
-	SDL_SetWindowGrab(sdl->win, SDL_TRUE);
 	SDL_SetRenderDrawColor(sdl->ren, 0, 0, 0, 0xFF);
 	SDL_RenderClear(sdl->ren);
 	SDL_RenderPresent(sdl->ren);
@@ -59,7 +57,6 @@ void				sdl_put_image(t_sdl *sdl)
 	SDL_UpdateTexture(sdl->texture, NULL, sdl->img.pixels, WIN_W * 4);
 	sdl_clear_image(&sdl->img);
 	SDL_RenderCopy(sdl->ren, sdl->texture, NULL, NULL);
-	SDL_RenderPresent(sdl->ren);
 }
 
 void				sdl_pixel_put(t_img *img, int x, int y, int color)

@@ -18,8 +18,8 @@
 # include "ft_sdl.h"
 # include "ft_vector2.h"
 # include "ft_matrix33.h"
-# define WIN_W			700
-# define WIN_H			600
+# define WIN_W			1280
+# define WIN_H			920
 # define TEX_W			64
 # define TEX_H			64
 # define MSG(x)				ft_killer(x)
@@ -28,10 +28,10 @@
 # define TURN_LEFT			3
 # define TURN_RIGHT			4
 # define SPRINT				10
-
 # define XOR_C(x, y)	(x * 256 / TEX_W) ^ (y * 256 / TEX_H)
 # define Y_C(x, y)		(y * 256 / TEX_H)
 # define XY_C(x, y)		(y * 128 / TEX_H + x * 128 / TEX_W)
+# define USAGE "wolf3d: wrong number of arguments.\nusage: ./wolf3d [map]"
 
 typedef struct				s_player
 {
@@ -40,6 +40,7 @@ typedef struct				s_player
 	t_vector2				cam;
 	int						j_time;
 	double					state;
+	int						view_area;
 }							t_player;
 typedef struct				s_frame
 {
@@ -52,6 +53,7 @@ typedef struct				s_frame
 }							t_frame;
 typedef struct				s_map
 {
+	t_vector2				player_pos;
 	int						m_w;
 	int						m_h;
 	int						**w_map;
@@ -63,13 +65,6 @@ typedef struct				s_keyboard
 	int						key3;
 	int						key4;
 }							t_keyboard;
-typedef struct				s_mouse
-{
-	int						x1;
-	int						y1;
-	int						x2;
-	int						y2;
-}							t_mouse;
 typedef struct				s_ray
 {
 	double					cam_x;
@@ -102,9 +97,10 @@ typedef struct				s_main
 	t_player				player;
 	t_frame					frame;
 	t_keyboard				kb;
-	t_mouse					mouse;
 	int						*texture[8];
 	short					tex_custom;
+	short					hard_mod;
+	short					ui;
 }							t_main;
 int							set_rgb(unsigned int r,
 									unsigned int g, unsigned int b);

@@ -43,8 +43,11 @@ static void		get_floor_point(t_main *m, t_ray *r, int t_id)
 	r->color = set_rgb((unsigned int)((r->color & 0x00ff0000) >> 16) / 2,
 					(unsigned int)((r->color & 0x0000ff00) >> 8) / 2,
 					(unsigned int)((r->color & 0x000000ff)) / 2);
-	if (r->curr_dist > 1)
-		r->color = set_rgb((unsigned int)(((r->color & 0x00ff0000) >> 16) / r->curr_dist), (unsigned int)(((r->color & 0x0000ff00) >> 8) / r->curr_dist), (unsigned int)(((r->color & 0x000000ff)) / r->curr_dist));
+	if (m->hard_mod && r->curr_dist > m->player.view_area)
+		r->color = set_rgb((unsigned int)(((r->color & 0x00ff0000) >> 16) /
+				r->curr_dist), (unsigned int)(((r->color & 0x0000ff00) >> 8) /
+				r->curr_dist), (unsigned int)(((r->color & 0x000000ff)) /
+				r->curr_dist));
 }
 
 static void		get_top_point(t_main *m, t_ray *r, int t_id)
@@ -52,7 +55,10 @@ static void		get_top_point(t_main *m, t_ray *r, int t_id)
 	r->color = m->texture[t_id][TEX_H * r->floor_tex_pos[1] +
 														r->floor_tex_pos[0]];
 	if (r->curr_dist > 1)
-		r->color = set_rgb((unsigned int)(((r->color & 0x00ff0000) >> 16) / r->curr_dist), (unsigned int)(((r->color & 0x0000ff00) >> 8) / r->curr_dist), (unsigned int)(((r->color & 0x000000ff)) / r->curr_dist));
+		r->color = set_rgb((unsigned int)(((r->color & 0x00ff0000) >> 16) /
+				r->curr_dist), (unsigned int)(((r->color & 0x0000ff00) >> 8) /
+				r->curr_dist), (unsigned int)(((r->color & 0x000000ff)) /
+				r->curr_dist));
 }
 
 void			floor_cast(t_ray *r, t_main *m, int x)

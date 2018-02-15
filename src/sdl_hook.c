@@ -25,7 +25,18 @@ static void			key_down(int key, t_main *m)
 	else if (key == SDLK_LEFT || key == SDLK_a)
 		m->kb.key2 = TURN_LEFT;
 	else if (key == 1073742049)
-		m->frame.speed_mod = 7;
+		m->frame.speed_mod = 10;
+	else if (key == SDLK_1)
+		m->hard_mod = !m->hard_mod;
+	else if (key == SDLK_2)
+		m->tex_custom = !m->tex_custom;
+	else if (key == SDLK_3)
+		m->player.view_area = 1;
+	else if (key == SDLK_4)
+		m->player.view_area = m->player.view_area + 1 > 3 ? 3 :
+							m->player.view_area + 1;
+	else if (key == SDLK_5)
+		m->ui = !m->ui;
 }
 
 static void			key_up(int key, t_main *m)
@@ -42,20 +53,6 @@ static void			key_up(int key, t_main *m)
 		m->frame.speed_mod = 5;
 }
 
-static void			mouse_motion(int x, int y, t_main *m)
-{
-	(void)y;
-	SDL_WarpMouseInWindow(m->sdl.win, WIN_W / 2, WIN_H / 2);
-	if (x < WIN_W / 2)
-		m->mouse.x1 = x;
-	if (x > WIN_W / 2)
-		m->mouse.x2 = x;
-}
-
-/*
-**printf("x1: %d\tx2 %d\n",m->mouse.x1,m->mouse.x2);
-*/
-
 void				sdl_hook(t_main *m)
 {
 	while (SDL_PollEvent(&m->sdl.e) != 0)
@@ -66,7 +63,5 @@ void				sdl_hook(t_main *m)
 			key_down(m->sdl.e.key.keysym.sym, m);
 		else if (m->sdl.e.type == SDL_KEYUP)
 			key_up(m->sdl.e.key.keysym.sym, m);
-		else if (m->sdl.e.type == SDL_MOUSEMOTION)
-			mouse_motion(m->sdl.e.motion.x, m->sdl.e.motion.y, m);
 	}
 }
