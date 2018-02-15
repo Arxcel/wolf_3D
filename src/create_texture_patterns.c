@@ -61,14 +61,14 @@ static void		ft_get_image(int *pixels, const char *path)
 
 static void		fill_texture_custom(t_main *m)
 {
-	ft_get_image(m->texture[0], "../pics/eagle.png");
-	ft_get_image(m->texture[1], "../pics/redbrick.png");
-	ft_get_image(m->texture[2], "../pics/bluestone.png");
-	ft_get_image(m->texture[3], "../pics/wood.png");
-	ft_get_image(m->texture[4], "../pics/greystone.png");
-	ft_get_image(m->texture[5], "../pics/mossy.png");
-	ft_get_image(m->texture[6], "../pics/colorstone.png");
-	ft_get_image(m->texture[7], "../pics/purplestone.png");
+	ft_get_image(m->texture[0], "./pics/eagle.png");
+	ft_get_image(m->texture[1], "./pics/redbrick.png");
+	ft_get_image(m->texture[2], "./pics/bluestone.png");
+	ft_get_image(m->texture[3], "./pics/wood.png");
+	ft_get_image(m->texture[4], "./pics/greystone.png");
+	ft_get_image(m->texture[5], "./pics/mossy.png");
+	ft_get_image(m->texture[6], "./pics/colorstone.png");
+	ft_get_image(m->texture[7], "./pics/purplestone.png");
 }
 
 void			create_textures(t_main *m)

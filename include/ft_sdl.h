@@ -12,9 +12,8 @@
 
 #ifndef FT_SDL_H
 # define FT_SDL_H
-# include "../frameworks/SDL2.framework/Headers/SDL.h"
-# include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
-# include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
+# include "SDL2/SDL.h"
+# include "SDL2/SDL_image.h"
 
 typedef struct		s_img
 {

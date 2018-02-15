@@ -49,7 +49,7 @@ static void				get_ui(t_main *m)
 	SDL_Texture		*img;
 	int				wh[2];
 
-	img = IMG_LoadTexture(m->sdl.ren, "../pics/Zap_Gun_Dual_Wield_BO.png");
+	img = IMG_LoadTexture(m->sdl.ren, "./pics/Zap_Gun_Dual_Wield_BO.png");
 	SDL_QueryTexture(img, NULL, NULL, &wh[0], &wh[1]);
 	texr.x = (int)(WIN_W / 10.0);
 	texr.y = (int)(WIN_H / 1.65);

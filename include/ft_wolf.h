@@ -12,12 +12,11 @@
 
 #ifndef FT_WOLF_H
 # define FT_WOLF_H
-# include <stdio.h>
 # include <fcntl.h>
-# include "ft_libftu.h"
 # include "ft_sdl.h"
 # include "ft_vector2.h"
 # include "ft_matrix33.h"
+# include "../libft/include/ft_libftu.h"
 # define WIN_W			1280
 # define WIN_H			920
 # define TEX_W			64
