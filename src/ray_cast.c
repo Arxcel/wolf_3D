@@ -76,6 +76,8 @@ static void					draw_vertical_line(t_ray *r, t_main *m, int x)
 			r->color = set_rgb((unsigned int)((r->color & 0x00ff0000) >> 16) /
 							2, (unsigned int)((r->color & 0x0000ff00) >> 8) / 2,
 							(unsigned int)((r->color & 0x000000ff)) / 2);
+		if (r->ray_length > 1)
+			r->color = set_rgb((unsigned int)(((r->color & 0x00ff0000) >> 16) / r->ray_length), (unsigned int)(((r->color & 0x0000ff00) >> 8) /r->ray_length), (unsigned int)(((r->color & 0x000000ff)) / r->ray_length));
 		sdl_pixel_put(&m->sdl.img, x, y, r->color);
 	}
 }
