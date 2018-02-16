@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 14:11:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/02/11 14:11:00 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/02/16 18:24:50 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void				finish(t_main *m)
 {
 	free(m->sdl.img.pixels);
 	SDL_DestroyTexture(m->sdl.texture);
+	SDL_DestroyTexture(m->u.ui);
+	SDL_DestroyTexture(m->g.gun_sprite);
 	SDL_DestroyRenderer(m->sdl.ren);
 	SDL_DestroyWindow(m->sdl.win);
 	SDL_Quit();
@@ -33,7 +35,7 @@ static void				finish(t_main *m)
 static void				init_wolf(t_main *m)
 {
 	m->hard_mod = 0;
-	m->ui = 0;
+	m->ui = 1;
 	m->tex_custom = 0;
 	m->player.pos = m->map.player_pos;
 	m->player.dir = (t_vector2){-1, 0};
@@ -45,18 +47,26 @@ static void				init_wolf(t_main *m)
 
 static void				get_ui(t_main *m)
 {
-	SDL_Rect		texr;
-	SDL_Texture		*img;
 	int				wh[2];
 
-	img = IMG_LoadTexture(m->sdl.ren, "./pics/Zap_Gun_Dual_Wield_BO.png");
-	SDL_QueryTexture(img, NULL, NULL, &wh[0], &wh[1]);
-	texr.x = (int)(WIN_W / 10.0);
-	texr.y = (int)(WIN_H / 1.65);
-	texr.w = (int)(wh[0] / 1.5);
-	texr.h = (int)(wh[1] / 1.5);
-	SDL_RenderCopy(m->sdl.ren, img, NULL, &texr);
-	SDL_DestroyTexture(img);
+	m->u.ui = IMG_LoadTexture(m->sdl.ren, "./pics/Zap_Gun_Dual_Wield_BO.png");
+	SDL_QueryTexture(m->u.ui, NULL, NULL, &wh[0], &wh[1]);
+	m->u.tex.x = 0;
+	m->u.tex.y = (int)(WIN_H - wh[1]);
+	m->u.tex.w = WIN_W;
+	m->u.tex.h = (int)(wh[1]);
+	SDL_RenderCopy(m->sdl.ren, m->u.ui, NULL, &m->u.tex);
+	m->g.gun_sprite = IMG_LoadTexture(m->sdl.ren, "./pics/pistol.png");
+	SDL_QueryTexture(m->g.gun_sprite, NULL, NULL, &wh[0], &wh[1]);
+	m->g.curr_sprite.x = 0;
+	m->g.curr_sprite.y = 0;
+	m->g.curr_sprite.w = (int)((wh[0]) / 4);
+	m->g.curr_sprite.h = (int)(wh[1] * 2);
+	m->g.all_sprites.x = (int)(WIN_W / 2.2);
+	m->g.all_sprites.y = (int)(WIN_H - m->u.tex.h - wh[1] * 2 + 15);
+	m->g.all_sprites.w = (int)(wh[0] * 2 / 4);
+	m->g.all_sprites.h = (int)(wh[1] * 2);
+	m->g.boom = 0;
 }
 
 int						main(int ac, char **av)
@@ -68,6 +78,7 @@ int						main(int ac, char **av)
 	ac != 2 ? MSG(USAGE) : ft_ftoa(av[1], &m.map);
 	sdl_init(&m.sdl);
 	init_wolf(&m);
+	get_ui(&m);
 	while (m.sdl.running)
 	{
 		create_textures(&m);
@@ -75,7 +86,7 @@ int						main(int ac, char **av)
 		ray_cast(&m);
 		sdl_put_image(&m.sdl);
 		if (m.ui)
-			get_ui(&m);
+			put_ui(&m);
 		SDL_RenderPresent(m.sdl.ren);
 		calc_performance(&m.frame);
 		move_player(&m);

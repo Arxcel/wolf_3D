@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 21:10:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/02/13 21:10:00 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/02/16 18:09:27 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ void						move_player(t_main *m)
 		turn_right(m);
 	else if (m->kb.key2 == TURN_LEFT)
 		turn_left(m);
+	else if (m->g.boom)
+		shoot(m);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sdl_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 13:57:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/02/13 13:57:00 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/02/16 18:07:57 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void			key_down(int key, t_main *m)
 							m->player.view_area + 1;
 	else if (key == SDLK_5)
 		m->ui = !m->ui;
+	else if (key == SDLK_SPACE)
+		m->g.boom = 1;
 }
 
 static void			key_up(int key, t_main *m)

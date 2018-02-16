@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wolf.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:09:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/02/07 17:09:00 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/02/16 18:09:32 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,18 @@ typedef struct				s_ray
 	int						floor_tex_pos[2];
 	double					percent;
 }							t_ray;
+typedef struct				s_gun
+{
+	SDL_Texture				*gun_sprite;
+	SDL_Rect				curr_sprite;
+	SDL_Rect				all_sprites;
+	short					boom;
+}							t_gun;
+typedef struct				s_ui
+{
+	SDL_Texture				*ui;
+	SDL_Rect				tex;
+}							t_ui;
 typedef struct				s_main
 {
 	t_sdl					sdl;
@@ -100,6 +112,8 @@ typedef struct				s_main
 	short					tex_custom;
 	short					hard_mod;
 	short					ui;
+	t_ui					u;
+	t_gun					g;
 }							t_main;
 int							set_rgb(unsigned int r,
 									unsigned int g, unsigned int b);
@@ -111,4 +125,6 @@ void						ft_ftoa(const char *file, t_map *map);
 void						create_textures(t_main *m);
 void						ray_cast(t_main *m);
 void						floor_cast(t_ray *r, t_main *m, int x);
+void						put_ui(t_main *m);
+void						shoot(t_main *m);
 #endif
