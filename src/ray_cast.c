@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkozlov <vkozlov@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 21:19:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/02/13 21:19:00 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/03/29 15:50:42 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ static void					calc_wall_h_tex(t_ray *r, t_main *m)
 	else
 		r->ray_length = (r->ray_position[1] - m->player.pos[1]
 						+ (1 - r->step[1]) / 2) / r->ray_dir[1];
-	r->line_h = (int)(m->sdl.img.h / r->ray_length);
+	if (r->ray_length >= 1)
+		r->line_h = (int)(m->sdl.img.h / r->ray_length);
+	else
+		r->line_h = (int)m->sdl.img.h;
 	r->draw[0] = -r->line_h / 1 + (int)(m->sdl.img.h / m->player.state);
 	if (r->draw[0] < 0)
 		r->draw[0] = 0;
