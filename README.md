@@ -14,6 +14,6 @@ git clone https://github.com/Arxcel/wolf_3D.git ~/wold_3D
 cd ~/RT
 make
 ```
-## Authors
+## Author
 Vadim Kozlov
 
