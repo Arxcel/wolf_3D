@@ -6,7 +6,7 @@
 /*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 21:19:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/03/29 15:50:42 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/03/29 17:04:00 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,15 @@ static void					draw_vertical_line(t_ray *r, t_main *m, int x)
 	int y;
 
 	y = r->draw[0] - 1;
+	r->color = 0;
 	while (++y < r->draw[1])
 	{
 		d = y * 256 - WIN_H * 128 + r->line_h * 128;
 		r->tex[1] = ((d * TEX_H) / r->line_h) / 256;
-		r->color = m->texture[r->tex_id][TEX_H * r->tex[1] + r->tex[0]];
+		if (r->ray_length >= 0.01)
+			r->color = m->texture[r->tex_id][TEX_H * r->tex[1] + r->tex[0]];
+		else
+			r->color = 0;
 		if (r->side == 1)
 			r->color = set_rgb((unsigned int)((r->color & 0x00ff0000) >> 16) /
 							2, (unsigned int)((r->color & 0x0000ff00) >> 8) / 2,
@@ -93,10 +97,7 @@ static void					calc_wall_h_tex(t_ray *r, t_main *m)
 	else
 		r->ray_length = (r->ray_position[1] - m->player.pos[1]
 						+ (1 - r->step[1]) / 2) / r->ray_dir[1];
-	if (r->ray_length >= 1)
-		r->line_h = (int)(m->sdl.img.h / r->ray_length);
-	else
-		r->line_h = (int)m->sdl.img.h;
+	r->line_h = (int)(m->sdl.img.h / r->ray_length);
 	r->draw[0] = -r->line_h / 1 + (int)(m->sdl.img.h / m->player.state);
 	if (r->draw[0] < 0)
 		r->draw[0] = 0;
