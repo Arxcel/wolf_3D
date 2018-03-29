@@ -11,7 +11,7 @@ Mac OS El Capitan / Sierra / High Sierra
 
 ```bash
 git clone https://github.com/Arxcel/wolf_3D.git ~/wold_3D
-cd ~/RT
+cd ~/wold_3D
 make
 ```
 ## Author
