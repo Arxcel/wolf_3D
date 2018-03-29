@@ -6,7 +6,7 @@
 /*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 14:16:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/02/16 14:55:36 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/03/29 15:43:00 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		get_col_by_i(void *ptr, int i)
 	unsigned char *tmp;
 
 	tmp = (unsigned char*)ptr;
-	return (set_rgb(tmp[i], tmp[i + 1], tmp[i + 2]));
+	return (set_rgb(tmp[i + 2], tmp[i + 1], tmp[i]));
 }
 
 static void		ft_get_image(int *pixels, const char *path)
@@ -54,7 +54,7 @@ static void		ft_get_image(int *pixels, const char *path)
 	while (++i < size)
 	{
 		pixels[i] = get_col_by_i(sur->pixels, k);
-		k += 3;
+		k += 4;
 	}
 	SDL_FreeSurface(sur);
 }

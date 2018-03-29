@@ -6,14 +6,14 @@
 /*   By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 13:45:00 by vkozlov           #+#    #+#             */
-/*   Updated: 2018/02/16 14:53:25 by vkozlov          ###   ########.fr       */
+/*   Updated: 2018/03/29 15:36:28 by vkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SDL_H
 # define FT_SDL_H
-# include "/Users/vkozlov/.brew/include/SDL2/SDL.h"
-# include "/Users/vkozlov/.brew/include/SDL2/SDL_image.h"
+# include "SDL.h"
+# include "SDL_image.h"
 
 typedef struct		s_img
 {

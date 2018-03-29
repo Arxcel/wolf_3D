@@ -6,7 +6,7 @@
 #    By: vkozlov <vkozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/03 14:46:13 by vkozlov           #+#    #+#              #
-#    Updated: 2018/02/16 15:52:06 by vkozlov          ###   ########.fr        #
+#    Updated: 2018/03/29 15:39:38 by vkozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,15 @@ FLAGS = -Wall -Wextra -Werror -O3
 
 IDIR = ./include
 
-CFLAGS = -I$(IDIR)
+CFLAGS = -I include \
+		 -I libSDL/SDL2.framework/Headers \
+		 -I libSDL/SDL2_image.framework/Headers 
 
 LIBFT = libft
 
-LSDL2 =  -L/Users/vkozlov/.brew/Cellar/sdl2/2.0.7/lib -lSDL2\
-        -L/Users/vkozlov/.brew/Cellar/sdl2_image/2.0.2/lib -lSDL2_image
+SDL2_F		= -framework SDL2 -framework SDL2_image -F ./libSDL/
+
+SDL2_P		= -rpath @loader_path/libSDL/
 
 DIR_S = src
 
@@ -55,7 +58,7 @@ all: obj $(NAME)
 
 $(NAME): $(OBJS)
 		make -C $(LIBFT)
-		$(CC) -o $(NAME) $(OBJS) $(FLAGS)  libft/libft.a $(LSDL2)
+		$(CC) -o $(NAME) $(OBJS) $(FLAGS)  libft/libft.a $(SDL2_P) $(SDL2_F)
 
 obj:
 		mkdir -p obj
